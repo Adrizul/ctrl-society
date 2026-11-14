@@ -1,0 +1,8 @@
+:root {
+  --sector-accent: #fbbf24;
+  --sector-secondary: #c084fc;
+  --sector-border: #9333ea;
+  --sector-glow: rgba(168, 85, 247, 0.38);
+  --nebula-a: rgba(107, 33, 168, 0.36);
+  --nebula-b: rgba(200, 85, 37, 0.18);
+}

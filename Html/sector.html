@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Museo Espacial | LOST SIGNAL</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../Css/base.css" />
+  <link rel="stylesheet" href="../Css/sector.css" />
+  <link id="theme-stylesheet" rel="stylesheet" href="../Css/themes/luna.css" />
+</head>
+<body>
+  <div class="space-bg" aria-hidden="true">
+    <div class="stars"></div>
+    <div class="nebula-glow"></div>
+  </div>
+
+  <!-- VISTA A: SALA DE MUSEO + OBJETOS ABANDONADOS -->
+  <main id="view-museum" class="screen">
+    <div class="sector-topbar">
+      <a href="index.html" class="btn-back">⬅ VOLVER AL TABLÓN DE SECTORES</a>
+      <span class="hud-tag" id="sector-code-label">SECTOR 01 // SALA DE EXHIBICIÓN</span>
+    </div>
+
+    <section class="museum-exhibit">
+      <div class="exhibit-media">
+        <div class="exhibit-frame">
+          <img id="sector-banner-img" src="" alt="Vista del sector espacial" onerror="this.style.display='none'" />
+          <span id="sector-banner-emoji" class="exhibit-fallback-emoji">🌕</span>
+          <div class="scanline-overlay"></div>
+        </div>
+        <div class="exhibit-caption">
+          <span id="sector-coordinates">COORDENADAS</span>
+          <span class="live-dot">● ARCHIVO ACTIVO</span>
+        </div>
+      </div>
+
+      <div class="exhibit-content">
+        <div class="exhibit-header">
+          <h1 id="sector-title">LA LUNA</h1>
+          <p class="exhibit-subtitle" id="sector-tagline">Satélite Natural</p>
+        </div>
+
+        <div class="museum-tabs" role="tablist">
+          <button class="tab-btn active" data-tab="general" role="tab" aria-selected="true">
+            📖 INFORMACIÓN GENERAL
+          </button>
+          <button class="tab-btn" data-tab="technical" role="tab" aria-selected="false">
+            ⚙️ INFORMACIÓN TÉCNICA
+          </button>
+        </div>
+
+        <div id="tab-general" class="tab-panel" role="tabpanel">
+          <p id="sector-general-text" class="museum-description"></p>
+          <div id="sector-highlights" class="highlights-grid"></div>
+          <div id="sector-gallery" class="exhibit-gallery"></div>
+        </div>
+
+        <div id="tab-technical" class="tab-panel hidden" role="tabpanel">
+          <p id="sector-tech-intro" class="museum-tech-intro"></p>
+          <div id="sector-tech-grid" class="tech-specs-grid"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="museum-missions">
+      <div class="objects-section-header">
+        <div>
+          <h2>HARDWARE ABANDONADO EN ESTE SECTOR</h2>
+          <p>Selecciona un objeto para iniciar el dron de rastreo y recuperar su historia oficial de la NASA</p>
+        </div>
+        <div class="progress-pill compact">
+          <span>SECTOR:</span>
+          <strong id="sector-progress-count">0 / 4</strong>
+        </div>
+      </div>
+
+      <div class="missions-grid" id="sector-objects-grid"></div>
+    </section>
+  </main>
+
+  <!-- VISTA B: VIDEO DE TRANSICIÓN -->
+  <section id="view-video" class="screen hidden" aria-label="Transición de viaje">
+    <div class="video-container">
+      <div class="video-hud-label" id="video-hud-label">ESTABLECIENDO ÓRBITA...</div>
+      <video id="intro-video" playsinline>
+        <source src="" type="video/mp4" />
+      </video>
+      <button id="btn-skip-video" class="btn-secondary">OMITIR TRANSMISIÓN ⟫</button>
+    </div>
+  </section>
+
+  <!-- VISTA C: MINIJUEGO 2D -->
+  <section id="view-game" class="screen hidden" aria-label="Minijuego de Rescate">
+    <div class="game-hud-bar">
+      <div class="hud-left">
+        <span class="hud-label" id="hud-sector-name">SECTOR</span>
+        <strong id="hud-mission-title">OBJETO</strong>
+      </div>
+
+      <div class="hud-center">
+        <div class="signal-meter-label">
+          <span>ESTABILIDAD DE SEÑAL / BATERÍA</span>
+          <span id="signal-percent">100%</span>
+        </div>
+        <div class="signal-meter-track">
+          <div id="signal-meter-fill" class="signal-meter-fill" style="width: 100%;"></div>
+        </div>
+      </div>
+
+      <div class="hud-right">
+        <div class="samples-box">
+          <span>DATOS:</span>
+          <strong id="hud-samples">0 / 3</strong>
+        </div>
+        <button id="btn-abort-game" class="btn-abort">VOLVER AL MUSEO</button>
+      </div>
+    </div>
+
+    <div class="canvas-wrapper">
+      <canvas id="game-canvas" width="960" height="500"></canvas>
+      <div class="controls-hint">
+        Usa <strong>W A S D</strong> o las <strong>Flechas</strong> • Recoge los <strong>3 datos</strong>, recarga en las <strong>balizas</strong> y alcanza el <strong>hardware</strong>
+      </div>
+    </div>
+
+    <div class="touch-dpad" aria-label="Controles táctiles">
+      <button data-dir="up">▲</button>
+      <div class="dpad-middle">
+        <button data-dir="left">◀</button>
+        <button data-dir="down">▼</button>
+        <button data-dir="right">▶</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODAL: CÁPSULA EDUCATIVA -->
+  <div id="modal-discovery" class="modal-backdrop hidden" role="dialog" aria-modal="true">
+    <div class="modal-card">
+      <div class="modal-header">
+        <span class="badge-restored">● SEÑAL RESTAURADA Y ARCHIVADA EN EL MUSEO</span>
+        <button id="btn-close-modal" class="btn-icon" aria-label="Cerrar">✕</button>
+      </div>
+
+      <div class="modal-grid">
+        <div class="modal-media">
+          <img id="discovery-img" src="" alt="Hardware real de la NASA" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22240%22><rect width=%22400%22 height=%22240%22 fill=%22%231a0f36%22/><text x=%2250%25%22 y=%2250%25%22 fill=%22%23ff9e44%22 font-family=%22sans-serif%22 font-size=%2218%22 text-anchor=%22middle%22>FOTO ARCHIVO NASA</text></svg>'" />
+          <span class="nasa-credit" id="discovery-source">ARCHIVO HISTÓRICO NASA</span>
+        </div>
+
+        <div class="modal-info">
+          <h2 id="discovery-title">NOMBRE DEL OBJETO</h2>
+          <p class="discovery-meta" id="discovery-meta">Año • Ubicación</p>
+
+          <div class="story-box">
+            <h3>Bitácora de Voz Recuperada</h3>
+            <p id="discovery-story">Historia educativa...</p>
+          </div>
+
+          <div class="audio-box">
+            <label for="discovery-audio">🔊 Escuchar narración de la pieza:</label>
+            <audio id="discovery-audio" controls>
+              <source src="" type="audio/mpeg" />
+            </audio>
+          </div>
+
+          <button id="btn-return-sector" class="btn-mission">
+            <span>GUARDAR EN EL MUSEO Y CONTINUAR</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../Js/data.js"></script>
+  <script src="../Js/minijuegos.js"></script>
+  <script src="../Js/sector.js"></script>
+</body>
+</html>

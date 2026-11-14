@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MUSEO GALÁCTICO | LOST SIGNAL</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../Css/base.css" />
+  <link rel="stylesheet" href="../Css/sector.css" />
+  <style>
+    .museum-lock-box {
+      max-width: 640px;
+      margin: 4rem auto;
+      padding: 2.2rem;
+      text-align: center;
+      background: var(--panel-bg);
+      border: 2px solid var(--status-lost);
+      border-radius: 18px;
+      box-shadow: 0 0 36px rgba(232, 106, 51, 0.25);
+    }
+    .lock-icon {
+      font-size: 3.5rem;
+      margin-bottom: 0.8rem;
+      display: block;
+    }
+    .museum-lock-box h1 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      color: var(--status-lost);
+      margin-bottom: 0.75rem;
+    }
+    .museum-lock-box p {
+      color: var(--text-muted);
+      font-size: 1.08rem;
+      line-height: 1.5;
+      margin-bottom: 1.4rem;
+    }
+    .museum-piece-card {
+      background: var(--panel-bg);
+      border: 1px solid var(--panel-border);
+      border-radius: 16px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .museum-piece-photo {
+      width: 100%;
+      height: 210px;
+      background: #080512;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 1px solid var(--sector-secondary);
+    }
+    .museum-piece-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .museum-piece-body {
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      flex: 1;
+    }
+    .museum-piece-body h3 {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      color: #fff;
+    }
+    .museum-piece-story {
+      font-size: 0.98rem;
+      line-height: 1.45;
+      color: var(--text-main);
+    }
+    .museum-piece-body audio {
+      width: 100%;
+      height: 36px;
+      margin-top: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="space-bg" aria-hidden="true">
+    <div class="stars"></div>
+    <div class="nebula-glow"></div>
+  </div>
+
+  <main class="screen">
+    <div class="sector-topbar">
+      <a href="index.html" class="btn-back">⬅ VOLVER AL CENTRO DE CONTROL</a>
+      <div class="progress-pill compact">
+        <span>ARCHIVO DEL MUSEO:</span>
+        <strong id="museum-progress">0 / 15</strong>
+      </div>
+    </div>
+
+    <!-- VISTA BLOQUEADA -->
+    <section id="museum-locked" class="museum-lock-box">
+      <span class="lock-icon">🔒</span>
+      <div class="hud-tag">ACCESO RESTRINGIDO // NIVEL DE AUTORIZACIÓN INSUFICIENTE</div>
+      <h1>SALA PRINCIPAL DEL MUSEO BLOQUEADA</h1>
+      <p>
+        Para abrir la exhibición completa con toda la información histórica, fotografías y registros recuperados, primero debes restaurar las <strong>15 señales perdidas</strong> en los minijuegos de La Luna, Marte y Espacio Profundo.
+      </p>
+      <div class="signal-meter-track" style="margin-bottom: 1.5rem;">
+        <div class="signal-meter-fill" id="lock-progress-bar" style="width: 0%;"></div>
+      </div>
+      <a href="index.html" class="btn-mission">
+        <span>IR A RESCATAR SEÑALES</span>
+        <span class="arrow">➔</span>
+      </a>
+    </section>
+
+    <!-- VISTA DESBLOQUEADA (SOLO INFORMACIÓN) -->
+    <section id="museum-unlocked" class="hidden">
+      <header class="exhibit-header" style="margin-bottom: 1.5rem;">
+        <div class="hud-tag">ARCHIVO OFICIAL COMPLETADO // 15 DE 15 SEÑALES RESTAURADAS</div>
+        <h1>MUSEO INTERACTIVO LOST SIGNAL</h1>
+        <p class="exhibit-subtitle">Colección completa de naves, rovers, instrumentos científicos y objetos orbitales recuperados</p>
+      </header>
+
+      <div class="museum-tabs" id="museum-filters">
+        <button class="tab-btn active" data-filter="all">TODAS LAS PIEZAS (15)</button>
+        <button class="tab-btn" data-filter="luna">LA LUNA (4)</button>
+        <button class="tab-btn" data-filter="marte">MARTE (5)</button>
+        <button class="tab-btn" data-filter="espacio">ESPACIO (6)</button>
+      </div>
+
+      <div class="missions-grid" id="museum-catalog"></div>
+    </section>
+  </main>
+
+  <script src="../Js/data.js"></script>
+  <script src="../Js/museo.js"></script>
+</body>
+</html>
