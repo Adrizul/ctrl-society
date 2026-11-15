@@ -1,14 +1,162 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="0; url=html/index.html">
-    <title>Lost Signal</title>
-    <script>
-        window.location.replace("html/index.html");
-    </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LOST SIGNAL | NASA Space Apps 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="Css/base.css" />
+  <link rel="stylesheet" href="Css/hub.css" />
 </head>
 <body>
-    <p>Redirigiendo... Si no carga automáticamente, haz clic <a href="html/index.html">aquí</a>.</p>
+  <div class="space-bg" aria-hidden="true">
+    <div class="stars"></div>
+    <div class="nebula-glow"></div>
+  </div>
+
+  <main class="screen">
+    <header class="hud-header">
+      <div class="hud-tag">NASA SPACE APPS CHALLENGE 2026 // MUSEO INTERACTIVO DE SEÑALES</div>
+      <div class="brand-title">
+        <span class="wave-bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+        <h1>LOST SIGNAL</h1>
+        <span class="wave-bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      </div>
+      <p class="subtitle">Regresando la señal a los héroes olvidados de la exploración espacial</p>
+
+      <div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 0.85rem; margin-top: 1rem;">
+        <div class="progress-pill" style="margin-top: 0;">
+          <span>SEÑALES RESTAURADAS EN EL MUSEO:</span>
+          <strong id="global-progress">0 / 15</strong>
+        </div>
+
+        <a href="html/museo.html" id="btn-visit-museum" class="progress-pill" style="margin-top: 0; border-color: var(--purple-bright); color: var(--text-main); cursor: pointer; text-decoration: none;">
+          <span id="museum-btn-icon">🔒</span>
+          <strong id="museum-btn-text" style="color: var(--purple-bright);">VISITAR MUSEO</strong>
+        </a>
+      </div>
+    </header>
+
+    <section class="missions-grid" aria-label="Sectores del Museo Espacial">
+      <!-- SECTOR 01: LA LUNA -->
+      <article class="mission-card">
+        <div class="card-top">
+          <span class="mission-code">SECTOR 01</span>
+          <span class="status-badge lost" id="badge-luna">0 / 4 SEÑALES</span>
+        </div>
+
+        <div class="hologram-stage">
+          <div class="holo-ring"></div>
+          <div class="holo-avatar">
+            <img
+              src="Assets/Imagenes/Sectores/destino_luna.png"
+              alt="La Luna"
+              onload="this.nextElementSibling.style.display='none'"
+              onerror="this.style.display='none'"
+            />
+            <span class="fallback-icon">🌕</span>
+          </div>
+          <div class="holo-base"></div>
+        </div>
+
+        <div class="card-body">
+          <h2>LA LUNA</h2>
+          <p class="mission-meta">384,400 km • Programa Apolo y Surveyor</p>
+          <p class="mission-desc">
+            Accede a la sala lunar del museo para explorar los módulos Apolo, rovers eléctricos, paquetes ALSEP y sondas Surveyor.
+          </p>
+        </div>
+
+        <a href="html/sector.html?sector=luna" class="btn-mission">
+          <span>ENTRAR AL SECTOR LUNAR</span>
+          <span class="arrow">➔</span>
+        </a>
+      </article>
+
+      <!-- SECTOR 02: MARTE -->
+      <article class="mission-card">
+        <div class="card-top">
+          <span class="mission-code">SECTOR 02</span>
+          <span class="status-badge lost" id="badge-marte">0 / 5 SEÑALES</span>
+        </div>
+
+        <div class="hologram-stage">
+          <div class="holo-ring"></div>
+          <div class="holo-avatar">
+            <img
+              src="Assets/Imagenes/Sectores/destino_marte.png"
+              alt="Planeta Marte"
+              onload="this.nextElementSibling.style.display='none'"
+              onerror="this.style.display='none'"
+            />
+            <span class="fallback-icon">🔴</span>
+          </div>
+          <div class="holo-base"></div>
+        </div>
+
+        <div class="card-body">
+          <h2>MARTE</h2>
+          <p class="mission-meta">225 Millones km • Rovers, Landers e Ingenuity</p>
+          <p class="mission-desc">
+            Visita la exhibición marciana y rescata la telemetría de Sojourner, Spirit, Opportunity, Viking, Phoenix, InSight e Ingenuity.
+          </p>
+        </div>
+
+        <a href="html/sector.html?sector=marte" class="btn-mission">
+          <span>ENTRAR AL SECTOR MARCIANO</span>
+          <span class="arrow">➔</span>
+        </a>
+      </article>
+
+      <!-- SECTOR 03: ESPACIO PROFUNDO -->
+      <article class="mission-card">
+        <div class="card-top">
+          <span class="mission-code">SECTOR 03</span>
+          <span class="status-badge lost" id="badge-espacio">0 / 4 SEÑALES</span>
+        </div>
+
+        <div class="hologram-stage">
+          <div class="holo-ring"></div>
+          <div class="holo-avatar">
+            <img
+              src="Assets/Imagenes/Sectores/destino_espacio.png"
+              alt="Espacio Profundo"
+              onload="this.nextElementSibling.style.display='none'"
+              onerror="this.style.display='none'"
+            />
+            <span class="fallback-icon">🛰️</span>
+          </div>
+          <div class="holo-base"></div>
+        </div>
+
+        <div class="card-body">
+          <h2>ESPACIO PROFUNDO</h2>
+          <p class="mission-meta">Asteroides, Planetas Exteriores y Exoplanetas</p>
+          <p class="mission-desc">
+            Explora las naves Dawn, NEAR Shoemaker, Pioneer 10 y 11, y el telescopio cazador de mundos Kepler.
+          </p>
+        </div>
+
+        <a href="html/sector.html?sector=espacio" class="btn-mission">
+          <span>ENTRAR A ESPACIO PROFUNDO</span>
+          <span class="arrow">➔</span>
+        </a>
+      </article>
+    </section>
+
+    <!-- TRIPULACIÓN LOST SIGNAL -->
+    <section class="team-section" aria-label="Tripulación Lost Signal">
+      <div class="team-header">
+        <span class="hud-tag">CONTROL DE MISIÓN // INTEGRANTES</span>
+        <h2>TRIPULACIÓN LOST SIGNAL</h2>
+      </div>
+      <div class="team-grid" id="team-grid"></div>
+    </section>
+  </main>
+
+  <script src="js/data.js"></script>
+  <script src="js/hub.js"></script>
 </body>
 </html>
