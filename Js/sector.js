@@ -7,6 +7,7 @@ document.getElementById("theme-stylesheet").href = `../css/themes/${sectorKey}.c
 const savedIds = JSON.parse(localStorage.getItem("lost_signal_restored") || "[]");
 const restoredSet = new Set(savedIds);
 let currentObject = null;
+let isLaunchingGame = false;
 
 function saveProgress() {
   localStorage.setItem("lost_signal_restored", JSON.stringify([...restoredSet]));
@@ -144,30 +145,39 @@ document.querySelectorAll(".tab-btn").forEach((btn) => {
   });
 });
 
+/* === FLUJO DE MISIÓN + CINEMÁTICA TARGET-LOCK === */
 const videoEl = document.getElementById("intro-video");
 
-function startObjectMission(obj) {
-  currentObject = obj;
-  document.getElementById("video-hud-label").textContent = `RASTREANDO: ${obj.name.toUpperCase()}...`;
+function triggerMinigameTransition() {
+  if (isLaunchingGame || !currentObject) return;
+  isLaunchingGame = true;
 
-  showView("video");
-  videoEl.src = obj.video;
-  videoEl.load();
-
-  const playPromise = videoEl.play();
-  if (playPromise !== undefined) {
-    playPromise.catch(() => startMinigameView());
+  if (typeof BF2Cinematics !== "undefined") {
+    BF2Cinematics.playMinigameLockOn(currentObject.name.toUpperCase(), () => {
+      isLaunchingGame = false;
+      startMinigameView();
+    });
+  } else {
+    isLaunchingGame = false;
+    startMinigameView();
   }
 }
 
-videoEl.addEventListener("ended", startMinigameView);
-videoEl.addEventListener("error", startMinigameView);
+function startObjectMission(obj) {
+  currentObject = obj;
+  isLaunchingGame = false;
+  triggerMinigameTransition();
+}
+
+videoEl.addEventListener("ended", triggerMinigameTransition);
+videoEl.addEventListener("error", triggerMinigameTransition);
 document.getElementById("btn-skip-video").addEventListener("click", () => {
   videoEl.pause();
-  startMinigameView();
+  triggerMinigameTransition();
 });
 
 document.getElementById("btn-abort-game").addEventListener("click", () => {
+  isLaunchingGame = false;
   MinigameEngine.stop();
   showView("museum");
 });
@@ -290,4 +300,13 @@ window.addEventListener("beforeunload", stopStorySpeech);
 document.getElementById("btn-close-modal").addEventListener("click", closeDiscoveryModal);
 document.getElementById("btn-return-sector").addEventListener("click", closeDiscoveryModal);
 
+/* === INICIALIZACIÓN Y DESCENSO ORBITAL AL ENTRAR AL SECTOR === */
 renderMuseumPage();
+
+if (typeof BF2Cinematics !== "undefined") {
+  BF2Cinematics.playSectorDescent({
+    sectorName: `${sector.code} // ${sector.title.toUpperCase()}`,
+    coords: sector.coordinates,
+    planetImage: sector.bannerImg
+  });
+}

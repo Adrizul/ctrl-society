@@ -99,6 +99,15 @@ a {
   margin-bottom: 0.4rem;
 }
 
+.hero-emphasis {
+  color: #a855f7;
+  font-style: normal;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-shadow: 0 0 14px rgba(168, 85, 247, 0.55);
+}
+
+/* === PÍLDORAS DE ESTADO Y NAVEGACIÓN === */
 .progress-pill {
   display: inline-flex;
   align-items: center;
@@ -116,8 +125,15 @@ a {
 .progress-pill[href]:hover {
   background: #1b1030;
   border-color: #a855f7;
-  transform: none;
-  box-shadow: none;
+}
+
+.progress-pill.compact {
+  margin-top: 0;
+}
+
+.progress-pill strong {
+  color: var(--sector-accent);
+  font-family: var(--font-display);
 }
 
 .pill-museum {
@@ -136,10 +152,6 @@ a {
   color: #ff9e44;
 }
 
-.progress-pill.compact {
-  margin-top: 0;
-}
-
 .live-dot {
   display: inline-block;
   width: 8px;
@@ -154,11 +166,6 @@ a {
 @keyframes liveBlink {
   0%, 100% { opacity: 1; transform: scale(1); }
   50% { opacity: 0.35; transform: scale(0.85); }
-}
-
-.progress-pill strong {
-  color: var(--sector-accent);
-  font-family: var(--font-display);
 }
 
 .status-badge {
@@ -181,6 +188,7 @@ a {
   border: 1px solid var(--status-ok);
 }
 
+/* === BOTONES === */
 .btn-mission {
   width: 100%;
   padding: 0.85rem 1.2rem;
@@ -215,7 +223,7 @@ a {
   border-radius: 4px;
   border: 1px solid rgba(168, 85, 247, 0.45);
   background: #110922;
-  color: #fff;
+  color: #ffffff;
   font-family: var(--font-display);
   font-size: 0.8rem;
   cursor: pointer;
@@ -227,6 +235,7 @@ a {
   background: #20113b;
 }
 
+/* === TARJETAS DE MISIÓN === */
 .missions-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -384,10 +393,27 @@ a {
   margin-bottom: 0.85rem;
 }
 
-.hero-emphasis {
-  color: #a855f7;
-  font-style: normal;
-  font-weight: 800;
-  letter-spacing: 0.04em;
-  text-shadow: 0 0 14px rgba(168, 85, 247, 0.55);
+/* === FOOTER DISCRETO DE CRÉDITOS === */
+.mission-footer {
+  margin-top: 2.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(168, 85, 247, 0.22);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem 1.5rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.mission-footer .footer-tag {
+  font-family: var(--font-display);
+  font-size: 0.74rem;
+  letter-spacing: 0.12em;
+  color: var(--sector-accent);
+}
+
+.mission-footer strong {
+  color: var(--text-main);
 }

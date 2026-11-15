@@ -6,7 +6,10 @@
   const totalObjects = allObjects.length;
   const restoredCount = restoredSet.size;
 
-  document.getElementById("global-progress").textContent = `${restoredCount} / ${totalObjects}`;
+  const globalProgressEl = document.getElementById("global-progress");
+  if (globalProgressEl) {
+    globalProgressEl.textContent = `${restoredCount} / ${totalObjects}`;
+  }
 
   const museumBtn = document.getElementById("btn-visit-museum");
   const museumIcon = document.getElementById("museum-btn-icon");
@@ -30,18 +33,6 @@
       badge.className = `status-badge ${count === total ? "restored" : "lost"}`;
     }
   });
-
-  const teamGrid = document.getElementById("team-grid");
-  if (teamGrid && typeof TEAM_DATA !== "undefined") {
-    teamGrid.innerHTML = TEAM_DATA.map(
-      (member) => `
-      <article class="team-card">
-        <span class="team-role">${member.role}</span>
-        <h3>${member.name}</h3>
-        <p>${member.contribution}</p>
-      </article>`
-    ).join("");
-  }
 
   // === SISTEMA ORBITAL DE MISIONES POR PLANETA ===
   function getMissionHook(obj) {
@@ -91,7 +82,6 @@
     const missions = sectorData.objects || [];
     const stepAngle = missions.length > 0 ? 360 / missions.length : 0;
 
-    // Genera los nodos alrededor del planeta
     const nodesHtml = missions
       .map((obj, idx) => {
         const angle = idx * stepAngle;
@@ -122,7 +112,6 @@
       renderTelemetry(sectorKey, missions[0]);
     }
 
-    // Al tocar el planeta, despliega u oculta las misiones en órbita
     planetBtn.addEventListener("click", () => {
       const isNowActive = slide.classList.toggle("orbit-active");
       planetBtn.setAttribute("aria-expanded", String(isNowActive));
@@ -133,7 +122,6 @@
       }
     });
 
-    // Interacción con cada satélite en órbita
     const orbitNodes = orbitContainer.querySelectorAll(".orbit-node");
     orbitNodes.forEach((node) => {
       const selectMission = () => {
