@@ -14,8 +14,6 @@
   <link rel="stylesheet" href="../css/sector.css" />
   <link rel="stylesheet" href="../css/minigame.css" />
   <link id="theme-stylesheet" rel="stylesheet" href="../css/themes/luna.css" />
-
-  
 </head>
 
 <body>
@@ -28,11 +26,17 @@
   <main id="view-museum" class="screen">
     <div class="sector-topbar">
       <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center;">
-        <a href="../index.html" class="btn-back">⬅ VOLVER AL TABLÓN DE SECTORES</a>
+        <a href="../index.html" class="btn-back" data-i18n="backToSectors">⬅ VOLVER AL TABLÓN DE SECTORES</a>
         <a href="comunidad.html" class="btn-back"
-          style="border-color: var(--orange-mars); color: var(--orange-amber);">📡 COMUNIDAD</a>
+           style="border-color: var(--orange-mars); color: var(--orange-amber);"
+           data-i18n="communityLink">📡 COMUNIDAD</a>
+
+        <!-- LANGUAGE TOGGLE -->
+        <button type="button" id="btn-language-toggle" class="btn-lang-toggle" aria-label="Switch to English">
+          🇺🇸 English
+        </button>
       </div>
-      <span class="hud-tag" id="sector-code-label">SECTOR 01 // SALA DE EXHIBICIÓN</span>
+      <span class="hud-tag" id="sector-code-label" data-i18n="sectorCodeLabel">SECTOR 01 // SALA DE EXHIBICIÓN</span>
     </div>
 
     <section class="museum-exhibit">
@@ -44,7 +48,7 @@
         </div>
         <div class="exhibit-caption">
           <span id="sector-coordinates">COORDENADAS</span>
-          <span class="live-dot">● ARCHIVO ACTIVO</span>
+          <span class="live-dot" data-i18n="archiveActive">● ARCHIVO ACTIVO</span>
         </div>
       </div>
 
@@ -55,10 +59,10 @@
         </div>
 
         <div class="museum-tabs" role="tablist">
-          <button class="tab-btn active" data-tab="general" role="tab" aria-selected="true">
+          <button class="tab-btn active" data-tab="general" role="tab" aria-selected="true" data-i18n="tabGeneral">
             📖 INFORMACIÓN GENERAL
           </button>
-          <button class="tab-btn" data-tab="technical" role="tab" aria-selected="false">
+          <button class="tab-btn" data-tab="technical" role="tab" aria-selected="false" data-i18n="tabTechnical">
             ⚙️ INFORMACIÓN TÉCNICA
           </button>
         </div>
@@ -78,11 +82,11 @@
     <section class="museum-missions">
       <div class="objects-section-header">
         <div>
-          <h2>HARDWARE ABANDONADO EN ESTE SECTOR</h2>
-          <p>Selecciona un objeto para iniciar el dron de rastreo y recuperar su historia oficial de la NASA</p>
+          <h2 data-i18n="abandonedHardware">HARDWARE ABANDONADO EN ESTE SECTOR</h2>
+          <p data-i18n="abandonedSubtitle">Selecciona un objeto para iniciar el dron de rastreo y recuperar su historia oficial de la NASA</p>
         </div>
         <div class="progress-pill compact">
-          <span>SECTOR:</span>
+          <span data-i18n="sectorLabel">SECTOR:</span>
           <strong id="sector-progress-count">0 / 4</strong>
         </div>
       </div>
@@ -94,11 +98,11 @@
   <!-- VISTA B: VIDEO DE TRANSICIÓN -->
   <section id="view-video" class="screen hidden" aria-label="Transición de viaje">
     <div class="video-container">
-      <div class="video-hud-label" id="video-hud-label">ESTABLECIENDO ÓRBITA...</div>
+      <div class="video-hud-label" id="video-hud-label" data-i18n="orbitEstablishing">ESTABLECIENDO ÓRBITA...</div>
       <video id="intro-video" playsinline>
         <source src="" type="video/mp4" />
       </video>
-      <button id="btn-skip-video" class="btn-secondary">OMITIR TRANSMISIÓN ⟫</button>
+      <button id="btn-skip-video" class="btn-secondary" data-i18n="skipVideo">OMITIR TRANSMISIÓN ⟫</button>
     </div>
   </section>
 
@@ -106,13 +110,13 @@
   <section id="view-game" class="screen hidden" aria-label="Minijuego de Rescate">
     <div class="game-hud-bar">
       <div class="hud-left">
-        <span class="hud-label" id="hud-sector-name">SECTOR</span>
-        <strong id="hud-mission-title">OBJETO</strong>
+        <span class="hud-label" id="hud-sector-name" data-i18n="hudSector">SECTOR</span>
+        <strong id="hud-mission-title" data-i18n="hudObject">OBJETO</strong>
       </div>
 
       <div class="hud-center">
         <div class="signal-meter-label">
-          <span>ESTABILIDAD DE SEÑAL / BATERÍA</span>
+          <span data-i18n="signalBattery">ESTABILIDAD DE SEÑAL / BATERÍA</span>
           <span id="signal-percent">100%</span>
         </div>
         <div class="signal-meter-track">
@@ -122,16 +126,16 @@
 
       <div class="hud-right">
         <div class="samples-box">
-          <span>DATOS:</span>
+          <span data-i18n="hudData">DATOS:</span>
           <strong id="hud-samples">0 / 3</strong>
         </div>
-        <button id="btn-abort-game" class="btn-abort">VOLVER AL MUSEO</button>
+        <button id="btn-abort-game" class="btn-abort" data-i18n="abortGame">VOLVER AL MUSEO</button>
       </div>
     </div>
 
     <div class="canvas-wrapper">
       <canvas id="game-canvas" width="960" height="500"></canvas>
-      <div class="controls-hint">
+      <div class="controls-hint" data-i18n="controlsHint">
         Usa <strong>W A S D</strong> o las <strong>Flechas</strong>. Recoge los
         <strong>3 datos</strong>, recarga en las <strong>balizas</strong> y alcanza el <strong>hardware</strong>.
       </div>
@@ -151,49 +155,49 @@
   <div id="modal-discovery" class="modal-backdrop hidden" role="dialog" aria-modal="true">
     <div class="modal-card">
       <div class="modal-header">
-        <span class="badge-restored">● SEÑAL RESTAURADA Y ARCHIVADA EN EL MUSEO</span>
-        <button id="btn-close-modal" class="btn-icon" aria-label="Cerrar">✕</button>
+        <span class="badge-restored" data-i18n="signalRestored">● SEÑAL RESTAURADA Y ARCHIVADA EN EL MUSEO</span>
+        <button id="btn-close-modal" class="btn-icon" data-i18n-aria="ariaCloseModal" aria-label="Cerrar">✕</button>
       </div>
 
       <div class="modal-grid">
         <div class="modal-media">
           <img id="discovery-img" src="" alt="Hardware real de la NASA"
             onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22240%22><rect width=%22400%22 height=%22240%22 fill=%22%231a0f36%22/><text x=%2250%25%22 y=%2250%25%22 fill=%22%23ff9e44%22 font-family=%22sans-serif%22 font-size=%2218%22 text-anchor=%22middle%22>FOTO ARCHIVO NASA</text></svg>'" />
-          <span class="nasa-credit" id="discovery-source">ARCHIVO HISTÓRICO NASA</span>
+          <span class="nasa-credit" id="discovery-source" data-i18n="nasaArchive">ARCHIVO HISTÓRICO NASA</span>
         </div>
 
         <div class="modal-info">
-          <h2 id="discovery-title">NOMBRE DEL OBJETO</h2>
-          <p class="discovery-meta" id="discovery-meta">Año • Ubicación</p>
+          <h2 id="discovery-title" data-i18n="objectName">NOMBRE DEL OBJETO</h2>
+          <p class="discovery-meta" id="discovery-meta" data-i18n="yearLocation">Año • Ubicación</p>
 
           <div class="story-box">
-            <h3>Bitácora de Voz Recuperada</h3>
-            <p id="discovery-story">Historia educativa...</p>
+            <h3 data-i18n="voiceLog">Bitácora de Voz Recuperada</h3>
+            <p id="discovery-story" data-i18n="educationalStory">Historia educativa...</p>
           </div>
 
           <div class="audio-box">
-            <label>🔊 Bitácora de voz automatizada:</label>
-            <button type="button" id="btn-tts-toggle" class="btn-tts">
+            <label data-i18n="autoVoiceLog">🔊 Bitácora de voz automatizada:</label>
+            <button type="button" id="btn-tts-toggle" class="btn-tts" data-i18n="listenNarration">
               ▶ ESCUCHAR NARRACIÓN
             </button>
           </div>
 
           <button id="btn-return-sector" class="btn-mission">
-            <span>GUARDAR EN EL MUSEO Y CONTINUAR</span>
+            <span data-i18n="saveAndContinue">GUARDAR EN EL MUSEO Y CONTINUAR</span>
           </button>
         </div>
       </div>
     </div>
   </div>
 
-  <script src="../Js/data.js"></script>
-  <script src="../Js/minijuegos/luna.js"></script>
-  <script src="../Js/minijuegos/marte.js"></script>
-  <script src="../Js/minijuegos/espacio.js"></script>
-  <script src="../Js/minijuegos/engine.js"></script>
-  <script src="../Js/sector.js"></script>
+  <script src="../js/translations.js"></script>
   <script src="../js/data.js"></script>
-<script src="../js/cinematics.js"></script>
+  <script src="../js/minijuegos/luna.js"></script>
+  <script src="../js/minijuegos/marte.js"></script>
+  <script src="../js/minijuegos/espacio.js"></script>
+  <script src="../js/minijuegos/engine.js"></script>
+  <script src="../js/sector.js"></script>
+  <script src="../js/cinematics.js"></script>
 
 </body>
 

@@ -1,7 +1,9 @@
 window.SectorMinigames = window.SectorMinigames || {};
 
 window.SectorMinigames.luna = {
-  label: "GRAVEDAD LUNAR · INERCIA BAJA",
+  get label() {
+    return (typeof I18N !== "undefined") ? I18N.t("minigameLabelLuna") : "GRAVEDAD LUNAR · INERCIA BAJA";
+  },
   physics: "lunar",
   signalDrain: 0.048,
   playerSpeed: 0.55,

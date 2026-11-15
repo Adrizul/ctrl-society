@@ -546,16 +546,16 @@ const BF2Cinematics = (() => {
       </div>
 
       <div class="visor-corner-hud left">
-        <div style="color:#c084fc;font-weight:bold;">NAVE: CTRL-EXPLORER // VISOR MK-IV</div>
-        <div>DESTINO: <strong style="color:#fff;">${sectorName}</strong></div>
-        <div id="visor-alt">ALTITUD: 384,400 KM</div>
-        <div id="visor-vel">VELOCIDAD: 11.2 KM/S</div>
+        <div style="color:#c084fc;font-weight:bold;">${(typeof I18N !== "undefined" && I18N.getLang() === "en") ? "SHIP: CTRL-EXPLORER // VISOR MK-IV" : "NAVE: CTRL-EXPLORER // VISOR MK-IV"}</div>
+        <div>${(typeof I18N !== "undefined" && I18N.getLang() === "en") ? "DESTINATION:" : "DESTINO:"} <strong style="color:#fff;">${sectorName}</strong></div>
+        <div id="visor-alt">${(typeof I18N !== "undefined" && I18N.getLang() === "en") ? "ALTITUDE: 384,400 KM" : "ALTITUD: 384,400 KM"}</div>
+        <div id="visor-vel">${(typeof I18N !== "undefined" && I18N.getLang() === "en") ? "VELOCITY: 11.2 KM/S" : "VELOCIDAD: 11.2 KM/S"}</div>
       </div>
 
       <div class="visor-corner-hud right">
         <div>COORD: ${coords}</div>
-        <div>ENLACE SATELITAL: <span id="visor-link-state" style="color:#f97316;">SINCRONIZANDO</span></div>
-        <button type="button" class="visor-skip-btn" id="visor-skip-btn">[ OMITIR VISOR ⏭ ]</button>
+        <div>${(typeof I18N !== "undefined" && I18N.getLang() === "en") ? "SATELLITE LINK:" : "ENLACE SATELITAL:"} <span id="visor-link-state" style="color:#f97316;">${(typeof I18N !== "undefined" && I18N.getLang() === "en") ? "SYNCHRONIZING" : "SINCRONIZANDO"}</span></div>
+        <button type="button" class="visor-skip-btn" id="visor-skip-btn">${(typeof I18N !== "undefined" && I18N.getLang() === "en") ? "[ SKIP VISOR ⏭ ]" : "[ OMITIR VISOR ⏭ ]"}</button>
       </div>
 
       <div class="visor-center-stage">
@@ -569,13 +569,13 @@ const BF2Cinematics = (() => {
 
       <div class="visor-status-panel">
         <div class="visor-status-header">
-          <span id="visor-phase-title">FASE 1 // APROXIMACIÓN DE ESPACIO PROFUNDO</span>
+          <span id="visor-phase-title">${(typeof I18N !== "undefined" && I18N.getLang() === "en") ? "PHASE 1 // DEEP SPACE APPROACH" : "FASE 1 // APROXIMACIÓN DE ESPACIO PROFUNDO"}</span>
           <strong id="visor-pct" style="color:#00f0ff;">0%</strong>
         </div>
         <div class="visor-progress-bar">
           <div class="visor-progress-fill" id="visor-fill"></div>
         </div>
-        <div class="visor-log-line" id="visor-log">&gt; INICIANDO SENSORES ÓPTICOS DEL VISOR...</div>
+        <div class="visor-log-line" id="visor-log">&gt; ${(typeof I18N !== "undefined" && I18N.getLang() === "en") ? "INITIALIZING VISOR OPTICAL SENSORS..." : "INICIANDO SENSORES ÓPTICOS DEL VISOR..."}</div>
       </div>
 
       <div class="visor-flash" id="visor-flash"></div>
@@ -603,26 +603,31 @@ const BF2Cinematics = (() => {
       setTimeout(() => overlay.classList.remove('is-glitching'), 240);
     }
 
+    const isEn = typeof I18N !== "undefined" && I18N.getLang() === "en";
+
     const timeline = [
       {
         t: 400, pct: '12%',
-        phase: 'FASE 1 // DESACELERACIÓN ORBITAL',
-        log: '> MOTORES DE FRENADO ACTIVOS. CALIBRANDO VISOR...',
-        alt: 'ALTITUD: 295,100 KM', vel: 'VELOCIDAD: 8.4 KM/S',
+        phase: isEn ? 'PHASE 1 // ORBITAL DECELERATION' : 'FASE 1 // DESACELERACIÓN ORBITAL',
+        log: isEn ? '> BRAKING ENGINES ACTIVE. CALIBRATING VISOR...' : '> MOTORES DE FRENADO ACTIVOS. CALIBRANDO VISOR...',
+        alt: isEn ? 'ALTITUDE: 295,100 KM' : 'ALTITUD: 295,100 KM',
+        vel: isEn ? 'VELOCITY: 8.4 KM/S' : 'VELOCIDAD: 8.4 KM/S',
         fn: () => { starSpeed = 16; audio.beep(620, 0.08); }
       },
       {
         t: 2750, pct: '36%',
-        phase: 'FASE 2 // SALTO ÓPTICO DE ÓRBITA ALTA',
-        log: '> ENLACE SATELITAL ESTABLECIDO. ACERCANDO ÓPTICA x2...',
-        alt: 'ALTITUD: 94,200 KM', vel: 'VELOCIDAD: 4.9 KM/S',
+        phase: isEn ? 'PHASE 2 // HIGH ORBIT OPTICAL JUMP' : 'FASE 2 // SALTO ÓPTICO DE ÓRBITA ALTA',
+        log: isEn ? '> SATELLITE LINK ESTABLISHED. ZOOMING OPTICS x2...' : '> ENLACE SATELITAL ESTABLECIDO. ACERCANDO ÓPTICA x2...',
+        alt: isEn ? 'ALTITUDE: 94,200 KM' : 'ALTITUD: 94,200 KM',
+        vel: isEn ? 'VELOCITY: 4.9 KM/S' : 'VELOCIDAD: 4.9 KM/S',
         fn: () => { starSpeed = 10; audio.setEnginePitch(68); triggerGlitch(840); }
       },
       {
         t: 5450, pct: '68%',
-        phase: 'FASE 3 // ESCANEO DE SEÑALES PERDIDAS',
-        log: '> DETECTADAS 4 BALIZAS DE HARDWARE NASA EN SUPERFICIE...',
-        alt: 'ALTITUD: 14,800 KM', vel: 'VELOCIDAD: 2.1 KM/S',
+        phase: isEn ? 'PHASE 3 // SCANNING FOR LOST SIGNALS' : 'FASE 3 // ESCANEO DE SEÑALES PERDIDAS',
+        log: isEn ? '> DETECTED 4 NASA HARDWARE BEACONS ON SURFACE...' : '> DETECTADAS 4 BALIZAS DE HARDWARE NASA EN SUPERFICIE...',
+        alt: isEn ? 'ALTITUDE: 14,800 KM' : 'ALTITUD: 14,800 KM',
+        vel: isEn ? 'VELOCITY: 2.1 KM/S' : 'VELOCIDAD: 2.1 KM/S',
         fn: () => {
           starSpeed = 5;
           triggerGlitch(980);
@@ -636,21 +641,23 @@ const BF2Cinematics = (() => {
       },
       {
         t: 8050, pct: '92%',
-        phase: 'FASE 4 // FIJACIÓN DE COORDENADAS DEL SECTOR',
-        log: '> TRIANGULACIÓN COMPLETA. PREPARANDO INSERCIÓN...',
-        alt: 'ALTITUD: 1,450 KM', vel: 'VELOCIDAD: 0.6 KM/S',
+        phase: isEn ? 'PHASE 4 // LOCKING SECTOR COORDINATES' : 'FASE 4 // FIJACIÓN DE COORDENADAS DEL SECTOR',
+        log: isEn ? '> TRIANGULATION COMPLETE. PREPARING INSERTION...' : '> TRIANGULACIÓN COMPLETA. PREPARANDO INSERCIÓN...',
+        alt: isEn ? 'ALTITUDE: 1,450 KM' : 'ALTITUD: 1,450 KM',
+        vel: isEn ? 'VELOCITY: 0.6 KM/S' : 'VELOCIDAD: 0.6 KM/S',
         fn: () => {
           starSpeed = 2.5;
-          linkEl.textContent = 'FIJADO [100%]';
+          linkEl.textContent = isEn ? 'LOCKED [100%]' : 'FIJADO [100%]';
           linkEl.style.color = '#00f0ff';
           triggerGlitch(1240);
         }
       },
       {
         t: 9750, pct: '100%',
-        phase: 'ENLACE ESTABLECIDO // BIENVENIDO AL SECTOR',
-        log: '> DESPLEGANDO INTERFAZ DE EXHIBICIÓN...',
-        alt: 'ALTITUD: 0.2 KM', vel: 'VELOCIDAD: 0.0 KM/S',
+        phase: isEn ? 'LINK ESTABLISHED // WELCOME TO SECTOR' : 'ENLACE ESTABLECIDO // BIENVENIDO AL SECTOR',
+        log: isEn ? '> DEPLOYING EXHIBITION INTERFACE...' : '> DESPLEGANDO INTERFAZ DE EXHIBICIÓN...',
+        alt: isEn ? 'ALTITUDE: 0.2 KM' : 'ALTITUD: 0.2 KM',
+        vel: isEn ? 'VELOCITY: 0.0 KM/S' : 'VELOCIDAD: 0.0 KM/S',
         fn: () => {
           flashEl.classList.add('is-active');
           audio.beep(1480, 0.22, 'triangle', 0.055);
@@ -730,22 +737,22 @@ const BF2Cinematics = (() => {
 
       <!-- HUD superior izquierdo y derecho -->
       <div class="visor-corner-hud left">
-        <div style="color:#c084fc;font-weight:bold;">DRON DE RASTREO // UNIDAD RECON-01</div>
-        <div>OBJETIVO: <strong style="color:#fff;">${pieceTitle}</strong></div>
-        <div id="drone-dist">DISTANCIA AL OBJETIVO: 2,400 M</div>
+        <div style="color:#c084fc;font-weight:bold;">${(typeof I18N !== "undefined" && I18N.getLang() === "en") ? "TRACKING DRONE // RECON-01 UNIT" : "DRON DE RASTREO // UNIDAD RECON-01"}</div>
+        <div>${(typeof I18N !== "undefined" && I18N.getLang() === "en") ? "TARGET:" : "OBJETIVO:"} <strong style="color:#fff;">${pieceTitle}</strong></div>
+        <div id="drone-dist">${(typeof I18N !== "undefined" && I18N.getLang() === "en") ? "DISTANCE TO TARGET: 2,400 M" : "DISTANCIA AL OBJETIVO: 2,400 M"}</div>
       </div>
 
       <div class="visor-corner-hud right">
-        <div>MODO: TELEMETRÍA TÁCTICA</div>
-        <div>SEÑAL: <span id="drone-sig-state" style="color:#00f0ff;">BUSCANDO</span></div>
-        <button type="button" class="visor-skip-btn" id="drone-skip-btn">[ SALTAR DESPLIEGUE ⏭ ]</button>
+        <div>${(typeof I18N !== "undefined" && I18N.getLang() === "en") ? "MODE: TACTICAL TELEMETRY" : "MODO: TELEMETRÍA TÁCTICA"}</div>
+        <div>${(typeof I18N !== "undefined" && I18N.getLang() === "en") ? "SIGNAL:" : "SEÑAL:"} <span id="drone-sig-state" style="color:#00f0ff;">${(typeof I18N !== "undefined" && I18N.getLang() === "en") ? "SCANNING" : "BUSCANDO"}</span></div>
+        <button type="button" class="visor-skip-btn" id="drone-skip-btn">${(typeof I18N !== "undefined" && I18N.getLang() === "en") ? "[ SKIP DEPLOYMENT ⏭ ]" : "[ SALTAR DESPLIEGUE ⏭ ]"}</button>
       </div>
 
       <!-- Caja central fusionada sobre la mira y las estrellas -->
       <div class="visor-center-stage">
         <div class="drone-visor-box" id="drone-box">
           <div style="font-size:0.74rem;letter-spacing:2px;color:#67e8f9;" id="drone-sub">
-            ESCANEANDO FRECUENCIA DE BALIZA...
+            ${(typeof I18N !== "undefined" && I18N.getLang() === "en") ? "SCANNING BEACON FREQUENCY..." : "ESCANEANDO FRECUENCIA DE BALIZA..."}
           </div>
           <div style="font-size:1.18rem;font-weight:bold;letter-spacing:2px;margin-top:6px;color:#fff;">
             ${pieceTitle}
@@ -766,7 +773,7 @@ const BF2Cinematics = (() => {
             <div class="visor-progress-fill" id="drone-fill" style="width:15%;"></div>
           </div>
           <div style="font-size:0.74rem;letter-spacing:1.5px;color:#00f0ff;" id="drone-status">
-            CALIBRANDO SENSORES DE RESCATE [15%]
+            ${(typeof I18N !== "undefined" && I18N.getLang() === "en") ? "CALIBRATING RESCUE SENSORS [15%]" : "CALIBRANDO SENSORES DE RESCATE [15%]"}
           </div>
         </div>
       </div>
@@ -785,14 +792,16 @@ const BF2Cinematics = (() => {
     const statusEl = overlay.querySelector('#drone-status');
     const flashEl = overlay.querySelector('#drone-flash');
 
+    const isEn = typeof I18N !== "undefined" && I18N.getLang() === "en";
+
     const steps = [
       {
         t: 1100,
         fn: () => {
           starSpeed = 11;
-          distEl.textContent = 'DISTANCIA AL OBJETIVO: 1,150 M';
+          distEl.textContent = isEn ? 'DISTANCE TO TARGET: 1,150 M' : 'DISTANCIA AL OBJETIVO: 1,150 M';
           fillEl.style.width = '48%';
-          statusEl.textContent = 'AISLANDO INTERFERENCIA SOLAR [48%]';
+          statusEl.textContent = isEn ? 'ISOLATING SOLAR INTERFERENCE [48%]' : 'AISLANDO INTERFERENCIA SOLAR [48%]';
           audio.beep(780, 0.08);
         }
       },
@@ -801,14 +810,14 @@ const BF2Cinematics = (() => {
         fn: () => {
           starSpeed = 4;
           box.classList.add('is-locked');
-          distEl.textContent = 'DISTANCIA AL OBJETIVO: 180 M';
-          sigEl.textContent = 'FIJADA [100%]';
+          distEl.textContent = isEn ? 'DISTANCE TO TARGET: 180 M' : 'DISTANCIA AL OBJETIVO: 180 M';
+          sigEl.textContent = isEn ? 'LOCKED [100%]' : 'FIJADA [100%]';
           sigEl.style.color = '#f97316';
-          subEl.textContent = '¡SEÑAL LOCALIZADA EN SUPERFICIE!';
+          subEl.textContent = isEn ? 'SIGNAL LOCATED ON SURFACE!' : '¡SEÑAL LOCALIZADA EN SUPERFICIE!';
           subEl.style.color = '#f97316';
           fillEl.style.width = '86%';
           fillEl.style.background = '#f97316';
-          statusEl.textContent = 'OBJETIVO FIJADO — INICIANDO DESCENSO [86%]';
+          statusEl.textContent = isEn ? 'TARGET LOCKED — COMMENCING DESCENT [86%]' : 'OBJETIVO FIJADO — INICIANDO DESCENSO [86%]';
           statusEl.style.color = '#fdba74';
           audio.beep(1180, 0.14, 'square', 0.05);
         }
@@ -816,9 +825,9 @@ const BF2Cinematics = (() => {
       {
         t: 4100,
         fn: () => {
-          distEl.textContent = 'DISTANCIA AL OBJETIVO: 0 M';
+          distEl.textContent = isEn ? 'DISTANCE TO TARGET: 0 M' : 'DISTANCIA AL OBJETIVO: 0 M';
           fillEl.style.width = '100%';
-          statusEl.textContent = 'DRON DESPLEGADO [100%]';
+          statusEl.textContent = isEn ? 'DRONE DEPLOYED [100%]' : 'DRON DESPLEGADO [100%]';
           flashEl.classList.add('is-active');
           audio.beep(1520, 0.2, 'triangle', 0.055);
         }

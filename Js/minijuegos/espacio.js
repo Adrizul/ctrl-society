@@ -1,7 +1,9 @@
 window.SectorMinigames = window.SectorMinigames || {};
 
 window.SectorMinigames.espacio = {
-  label: "GRAVEDAD CERO · ESCOMBROS ORBITALES",
+  get label() {
+    return (typeof I18N !== "undefined") ? I18N.t("minigameLabelEspacio") : "GRAVEDAD CERO · ESCOMBROS ORBITALES";
+  },
   physics: "space",
   signalDrain: 0.068,
   playerSpeed: 0.48,

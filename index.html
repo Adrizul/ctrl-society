@@ -18,37 +18,49 @@
 
   <main class="screen">
     <header class="hud-header">
-      <div class="hud-tag">NASA SPACE APPS CHALLENGE 2026 // MUSEO INTERACTIVO DE SEÑALES</div>
+      <div class="hud-tag" data-i18n="hudTag">NASA SPACE APPS CHALLENGE 2026 // MUSEO INTERACTIVO DE SEÑALES</div>
       <div class="brand-title">
         <span class="wave-bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
         <h1><span class="title-orange">CTRL</span> <span class="title-purple">SOCIETY</span></h1>
         <span class="wave-bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
       </div>
-      <p class="subtitle">Regresando la señal a los <strong class="hero-emphasis">héroes olvidados</strong> de la exploración espacial</p>
+      <p class="subtitle">
+        <span data-i18n="heroSubtitle">Regresando la señal a los</span>
+        <strong class="hero-emphasis" data-i18n="heroEmphasis">héroes olvidados</strong>
+        <span data-i18n="heroRest">de la exploración espacial</span>
+      </p>
 
       <div class="header-pills-row">
         <div class="progress-pill">
-          <span>SEÑALES RESTAURADAS EN EL MUSEO:</span>
+          <span data-i18n="restoredInMuseum">SEÑALES RESTAURADAS EN EL MUSEO:</span>
           <strong id="global-progress">0 / 15</strong>
         </div>
 
         <a href="html/museo.html" id="btn-visit-museum" class="progress-pill pill-museum">
           <span id="museum-btn-icon">🔒</span>
-          <strong id="museum-btn-text">VISITAR MUSEO</strong>
+          <strong id="museum-btn-text" data-i18n="visitMuseum">VISITAR MUSEO</strong>
         </a>
 
-        <a href="html/comunidad.html" id="btn-comunidad" class="progress-pill pill-community" title="Ver actualizaciones de misiones NASA y foro de la comunidad">
+        <a href="html/comunidad.html" id="btn-comunidad" class="progress-pill pill-community"
+           data-i18n-title="syncTitle"
+           title="Ver actualizaciones de misiones NASA y foro de la comunidad">
           <span class="live-dot"></span>
           <span id="comunidad-btn-icon">📡</span>
-          <strong id="comunidad-btn-text">COMUNIDAD & NASA</strong>
+          <strong id="comunidad-btn-text" data-i18n="communityBtn">COMUNIDAD &amp; NASA</strong>
         </a>
+
+        <!-- LANGUAGE TOGGLE -->
+        <button type="button" id="btn-language-toggle" class="btn-lang-toggle" aria-label="Switch to English">
+          🇺🇸 English
+        </button>
       </div>
     </header>
 
     <!-- CARRUSEL ORBITAL DE PLANETAS -->
-    <section class="sector-carousel" aria-label="Sectores del Museo Espacial">
+    <section class="sector-carousel" data-i18n-aria="ariaCarousel" aria-label="Sectores del Museo Espacial">
       <div class="carousel-controls-wrapper">
-        <button type="button" class="carousel-btn prev" id="carousel-prev" aria-label="Sector anterior">
+        <button type="button" class="carousel-btn prev" id="carousel-prev"
+                data-i18n-aria="prevSector" aria-label="Sector anterior">
           ❮
         </button>
 
@@ -58,16 +70,20 @@
             <!-- SECTOR 01: LA LUNA -->
             <article class="planet-slide" data-sector="luna">
               <div class="planet-hud-meta">
-                <span class="mission-code">SECTOR 01 / 03</span>
+                <span class="mission-code" data-i18n="sectorCode1">SECTOR 01 / 03</span>
                 <span class="status-badge lost" id="badge-luna">0 / 4 SEÑALES</span>
               </div>
 
               <div class="giant-planet-stage">
                 <div class="planet-orbit-ring"></div>
                 <div class="planet-orbit-ring inner"></div>
-                <div class="orbit-system" id="orbit-luna" aria-label="Misiones en órbita lunar"></div>
+                <div class="orbit-system" id="orbit-luna"
+                     data-i18n-aria="ariaOrbitLuna"
+                     aria-label="Misiones en órbita lunar"></div>
 
-                <button type="button" class="planet-sphere" aria-expanded="false" aria-label="Seleccionar La Luna para ver misiones en órbita">
+                <button type="button" class="planet-sphere" aria-expanded="false"
+                        data-i18n-aria="ariaLunaBtn"
+                        aria-label="Seleccionar La Luna para ver misiones en órbita">
                   <img
                     src="assets/Imagenes/sectores/destino_luna.png"
                     alt="La Luna"
@@ -75,7 +91,7 @@
                     onerror="this.style.display='none'"
                   />
                   <span class="fallback-icon">🌕</span>
-                  <span class="planet-scan-hint">📡 TOCA PARA ÓRBITA</span>
+                  <span class="planet-scan-hint" data-i18n="touchOrbit">📡 TOCA PARA ÓRBITA</span>
                 </button>
                 <div class="planet-base-glow"></div>
               </div>
@@ -83,10 +99,10 @@
               <div class="orbit-telemetry-card" id="telemetry-luna" aria-live="polite"></div>
 
               <div class="planet-info">
-                <h2>LA LUNA</h2>
-                <p class="planet-hook">384,400 km • Huellas del Programa Apolo y Surveyor</p>
+                <h2 data-i18n="lunaTitle">LA LUNA</h2>
+                <p class="planet-hook" data-i18n="lunaHook">384,400 km • Huellas del Programa Apolo y Surveyor</p>
                 <a href="html/sector.html?sector=luna" class="btn-mission planet-cta">
-                  <span>EXPLORAR SECTOR LUNAR</span>
+                  <span data-i18n="exploreLuna">EXPLORAR SECTOR LUNAR</span>
                   <span class="arrow">➔</span>
                 </a>
               </div>
@@ -95,16 +111,20 @@
             <!-- SECTOR 02: MARTE -->
             <article class="planet-slide" data-sector="marte">
               <div class="planet-hud-meta">
-                <span class="mission-code">SECTOR 02 / 03</span>
+                <span class="mission-code" data-i18n="sectorCode2">SECTOR 02 / 03</span>
                 <span class="status-badge lost" id="badge-marte">0 / 5 SEÑALES</span>
               </div>
 
               <div class="giant-planet-stage">
                 <div class="planet-orbit-ring"></div>
                 <div class="planet-orbit-ring inner"></div>
-                <div class="orbit-system" id="orbit-marte" aria-label="Misiones en órbita marciana"></div>
+                <div class="orbit-system" id="orbit-marte"
+                     data-i18n-aria="ariaOrbitMarte"
+                     aria-label="Misiones en órbita marciana"></div>
 
-                <button type="button" class="planet-sphere" aria-expanded="false" aria-label="Seleccionar Marte para ver misiones en órbita">
+                <button type="button" class="planet-sphere" aria-expanded="false"
+                        data-i18n-aria="ariaMarteBtn"
+                        aria-label="Seleccionar Marte para ver misiones en órbita">
                   <img
                     src="assets/Imagenes/sectores/destino_marte.png"
                     alt="Planeta Marte"
@@ -112,7 +132,7 @@
                     onerror="this.style.display='none'"
                   />
                   <span class="fallback-icon">🔴</span>
-                  <span class="planet-scan-hint">📡 TOCA PARA ÓRBITA</span>
+                  <span class="planet-scan-hint" data-i18n="touchOrbit">📡 TOCA PARA ÓRBITA</span>
                 </button>
                 <div class="planet-base-glow"></div>
               </div>
@@ -120,10 +140,10 @@
               <div class="orbit-telemetry-card" id="telemetry-marte" aria-live="polite"></div>
 
               <div class="planet-info">
-                <h2>MARTE</h2>
-                <p class="planet-hook">225 Millones km • Rovers, Landers e Ingenuity</p>
+                <h2 data-i18n="marteTitle">MARTE</h2>
+                <p class="planet-hook" data-i18n="marteHook">225 Millones km • Rovers, Landers e Ingenuity</p>
                 <a href="html/sector.html?sector=marte" class="btn-mission planet-cta">
-                  <span>EXPLORAR SECTOR MARCIANO</span>
+                  <span data-i18n="exploreMarte">EXPLORAR SECTOR MARCIANO</span>
                   <span class="arrow">➔</span>
                 </a>
               </div>
@@ -132,16 +152,20 @@
             <!-- SECTOR 03: ESPACIO PROFUNDO -->
             <article class="planet-slide" data-sector="espacio">
               <div class="planet-hud-meta">
-                <span class="mission-code">SECTOR 03 / 03</span>
+                <span class="mission-code" data-i18n="sectorCode3">SECTOR 03 / 03</span>
                 <span class="status-badge lost" id="badge-espacio">0 / 4 SEÑALES</span>
               </div>
 
               <div class="giant-planet-stage">
                 <div class="planet-orbit-ring"></div>
                 <div class="planet-orbit-ring inner"></div>
-                <div class="orbit-system" id="orbit-espacio" aria-label="Misiones en órbita de espacio profundo"></div>
+                <div class="orbit-system" id="orbit-espacio"
+                     data-i18n-aria="ariaOrbitEspacio"
+                     aria-label="Misiones en órbita de espacio profundo"></div>
 
-                <button type="button" class="planet-sphere" aria-expanded="false" aria-label="Seleccionar Espacio Profundo para ver misiones en órbita">
+                <button type="button" class="planet-sphere" aria-expanded="false"
+                        data-i18n-aria="ariaEspacioBtn"
+                        aria-label="Seleccionar Espacio Profundo para ver misiones en órbita">
                   <img
                     src="assets/Imagenes/sectores/destino_espacio.png"
                     alt="Espacio Profundo"
@@ -149,7 +173,7 @@
                     onerror="this.style.display='none'"
                   />
                   <span class="fallback-icon">🛰️</span>
-                  <span class="planet-scan-hint">📡 TOCA PARA ÓRBITA</span>
+                  <span class="planet-scan-hint" data-i18n="touchOrbit">📡 TOCA PARA ÓRBITA</span>
                 </button>
                 <div class="planet-base-glow"></div>
               </div>
@@ -157,10 +181,10 @@
               <div class="orbit-telemetry-card" id="telemetry-espacio" aria-live="polite"></div>
 
               <div class="planet-info">
-                <h2>ESPACIO PROFUNDO</h2>
-                <p class="planet-hook">Más allá de la órbita • Sondas pioneras y cazadores de mundos</p>
+                <h2 data-i18n="espacioTitle">ESPACIO PROFUNDO</h2>
+                <p class="planet-hook" data-i18n="espacioHook">Más allá de la órbita • Sondas pioneras y cazadores de mundos</p>
                 <a href="html/sector.html?sector=espacio" class="btn-mission planet-cta">
-                  <span>EXPLORAR ESPACIO PROFUNDO</span>
+                  <span data-i18n="exploreEspacio">EXPLORAR ESPACIO PROFUNDO</span>
                   <span class="arrow">➔</span>
                 </a>
               </div>
@@ -169,26 +193,33 @@
           </div>
         </div>
 
-        <button type="button" class="carousel-btn next" id="carousel-next" aria-label="Siguiente sector">
+        <button type="button" class="carousel-btn next" id="carousel-next"
+                data-i18n-aria="nextSector" aria-label="Siguiente sector">
           ❯
         </button>
       </div>
 
-      <div class="carousel-indicators" role="tablist" aria-label="Seleccionar sector">
-        <button type="button" class="indicator-pill active" data-index="0">01 • LA LUNA</button>
-        <button type="button" class="indicator-pill" data-index="1">02 • MARTE</button>
-        <button type="button" class="indicator-pill" data-index="2">03 • ESPACIO PROFUNDO</button>
+      <div class="carousel-indicators" role="tablist"
+           data-i18n-aria="ariaSelectSector" aria-label="Seleccionar sector">
+        <button type="button" class="indicator-pill active" data-index="0" data-i18n="indicator1">01 • LA LUNA</button>
+        <button type="button" class="indicator-pill" data-index="1" data-i18n="indicator2">02 • MARTE</button>
+        <button type="button" class="indicator-pill" data-index="2" data-i18n="indicator3">03 • ESPACIO PROFUNDO</button>
       </div>
     </section>
 
     <!-- CRÉDITOS DISCRETOS DE MISIÓN -->
     <footer class="mission-footer">
-      <span class="footer-tag">CTRL SOCIETY // NASA SPACE APPS CHALLENGE 2026</span>
-      <p>Desarrollo principal: <strong>Ángel David Sánchez</strong> · Con colaboración del equipo CTRL Society</p>
+      <span class="footer-tag" data-i18n="footerTag">CTRL SOCIETY // NASA SPACE APPS CHALLENGE 2026</span>
+      <p>
+        <span data-i18n="footerCredit">Desarrollo principal:</span>
+        <strong>Ángel David Sánchez</strong>
+        <span data-i18n="footerTeam">· Con colaboración del equipo CTRL Society</span>
+      </p>
     </footer>
   </main>
 
+  <script src="js/translations.js"></script>
   <script src="js/data.js"></script>
-  <script src="js/hub.js?v=4"></script>
+  <script src="js/hub.js?v=5"></script>
 </body>
 </html>

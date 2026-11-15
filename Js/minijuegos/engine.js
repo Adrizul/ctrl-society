@@ -407,7 +407,27 @@ window.MinigameEngine = (function () {
     ctx.fillStyle = "rgba(255, 255, 255, 0.8)";
     ctx.font = "600 12px Orbitron, monospace";
     ctx.textAlign = "left";
-    ctx.fillText(`${state.sectorLabel} // NIVEL ${state.missionIndex + 1}/${state.totalMissions}`, 20, 26);
+    const levelLabel = (typeof I18N !== "undefined") ? I18N.t("levelHudLabel") : "NIVEL";
+    const dynamicSectorLabel = (state.sectorDef && state.sectorDef.label) ? state.sectorDef.label : state.sectorLabel;
+    ctx.fillText(`${dynamicSectorLabel} // ${levelLabel} ${state.missionIndex + 1}/${state.totalMissions}`, 20, 26);
+
+    // Mensajes flotantes del HUD (colisión, batería baja, datos recolectados)
+    if (state.hudMessage && state.hudMessage.timer > 0) {
+      state.hudMessage.timer--;
+      ctx.save();
+      ctx.font = "bold 13px Orbitron, monospace";
+      ctx.textAlign = "center";
+      ctx.fillStyle = state.hudMessage.color || "#ff9e44";
+      ctx.shadowColor = state.hudMessage.color || "#ff9e44";
+      ctx.shadowBlur = 10;
+      ctx.fillText(state.hudMessage.text, w / 2, 26);
+      ctx.restore();
+    }
+  }
+
+  function triggerHudMessage(text, color = "#ff9e44") {
+    if (!state) return;
+    state.hudMessage = { text, color, timer: 75 };
   }
 
   function tick() {
@@ -455,8 +475,16 @@ window.MinigameEngine = (function () {
 
     // Drenaje de señal
     state.signal -= state.signalDrain;
+    if (state.signal <= 25 && !state.lowBatteryTriggered) {
+      triggerHudMessage((typeof I18N !== "undefined") ? I18N.t("minigameLowBattery") : "⚠️ BATERÍA CRÍTICA", "#ff6b35");
+      state.lowBatteryTriggered = true;
+    } else if (state.signal > 35) {
+      state.lowBatteryTriggered = false;
+    }
+
     if (state.signal <= 0) {
       state.signal = 100;
+      triggerHudMessage((typeof I18N !== "undefined") ? I18N.t("minigameReboot") : "🔄 SEÑAL PERDIDA - REINICIANDO", "#ff6b35");
       spawnParticles(p.x, p.y, "#ff6b35", 18, 3.5);
       p.x = canvas.width * 0.085;
       p.y = canvas.height * 0.50;
@@ -477,6 +505,8 @@ window.MinigameEngine = (function () {
       if (!s.taken && Math.hypot(p.x - s.x, p.y - s.y) < p.r + s.r) {
         s.taken = true;
         state.collected += 1;
+        const dataPrefix = (typeof I18N !== "undefined") ? I18N.t("minigameDataCollected") : "📦 DATO RECUPERADO";
+        triggerHudMessage(`${dataPrefix} (${state.collected}/3)`, "#c084fc");
         spawnParticles(s.x, s.y, "#c084fc", 16, 3.2);
       }
     });
@@ -496,6 +526,7 @@ window.MinigameEngine = (function () {
 
       if (Math.hypot(p.x - hz.x, p.y - hz.y) < p.r + hz.r) {
         state.signal = Math.max(10, state.signal - 18);
+        triggerHudMessage((typeof I18N !== "undefined") ? I18N.t("minigameCollision") : "💥 IMPACTO: PÉRDIDA DE SEÑAL", "#ff4d00");
         spawnParticles(p.x, p.y, "#ff6b35", 14, 3.5);
         p.vx = -4.5;
         p.x = Math.max(40, p.x - 32);
@@ -505,6 +536,7 @@ window.MinigameEngine = (function () {
     // Victoria
     const t = state.target;
     if (Math.hypot(p.x - t.x, p.y - t.y) < p.r + t.r && state.collected >= 3) {
+      triggerHudMessage((typeof I18N !== "undefined") ? I18N.t("minigameComplete") : "🎯 OBJETIVO ALCANZADO // SEÑAL RESCATADA", "#2ec4b6");
       stop();
       if (typeof state.onComplete === "function") state.onComplete();
       return;
@@ -532,6 +564,8 @@ window.MinigameEngine = (function () {
       particles: [],
       bgColors: config.bgColors || ["#130924", "#241042"],
       onComplete: config.onComplete,
+      sectorDef,
+      sectorKey,
       sectorLabel: sectorDef.label,
       missionIndex: mIdx,
       totalMissions,
@@ -541,6 +575,8 @@ window.MinigameEngine = (function () {
       windActive: false,
       signal: 100,
       collected: 0,
+      hudMessage: null,
+      lowBatteryTriggered: false,
       player: {
         x: w * 0.085,
         y: h * 0.50,

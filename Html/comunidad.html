@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>COMUNIDAD & TELEMETRÍA NASA | CTRL SOCIETY</title>
+  <title>COMUNIDAD &amp; TELEMETRÍA NASA | CTRL SOCIETY</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet" />
@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="../css/comunidad.css" />
 </head>
 <body>
-  <!-- FONDO ESPACIAL INTERACTIVO -->
+  <!-- FONDO ESPACIAL -->
   <div class="space-bg" aria-hidden="true">
     <div class="stars"></div>
     <div class="nebula-glow"></div>
@@ -21,146 +21,167 @@
     <!-- BARRA DE NAVEGACIÓN SUPERIOR -->
     <div class="sector-topbar" style="margin-bottom: 1.5rem;">
       <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center;">
-        <a href="../index.html" class="btn-back">⬅ VOLVER AL CENTRO DE CONTROL</a>
-        <a href="museo.html" class="btn-back" style="border-color: var(--purple-bright); color: var(--purple-bright);">🏛️ VISITAR MUSEO</a>
+        <a href="../index.html" class="btn-back" data-i18n="backToControlCenter">⬅ VOLVER AL CENTRO DE CONTROL</a>
+        <a href="museo.html" class="btn-back"
+           style="border-color: var(--purple-bright); color: var(--purple-bright);"
+           data-i18n="visitMuseumBtn">🏛️ VISITAR MUSEO</a>
+
+        <!-- LANGUAGE TOGGLE -->
+        <button type="button" id="btn-language-toggle" class="btn-lang-toggle" aria-label="Switch to English">
+          🇺🇸 English
+        </button>
       </div>
       <div class="progress-pill compact" style="border-color: var(--status-ok);">
         <span class="live-dot"></span>
-        <span style="color: var(--text-muted);">RED TELEMÉTRICA:</span>
-        <strong style="color: var(--status-ok);">EN LÍNEA</strong>
+        <span style="color: var(--text-muted);" data-i18n="teleNetwork">RED TELEMÉTRICA:</span>
+        <strong style="color: var(--status-ok);" data-i18n="online">EN LÍNEA</strong>
       </div>
     </div>
 
-    <!-- ENCABEZADO PRINCIPAL DE COMUNIDAD -->
+    <!-- ENCABEZADO PRINCIPAL -->
     <header class="comunidad-header">
-      <div class="hud-tag">NASA SPACE APPS CHALLENGE 2026 // RED COMUNITARIA & TELEMETRÍA</div>
-      <h1><span class="title-orange">CTRL</span> <span class="title-purple">SOCIETY</span> // COMUNIDAD</h1>
-      <p class="subtitle" style="max-width: 800px; margin: 0 auto;">
+      <div class="hud-tag" data-i18n="comunidadHudTag">NASA SPACE APPS CHALLENGE 2026 // RED COMUNITARIA &amp; TELEMETRÍA</div>
+      <h1>
+        <span class="title-orange">CTRL</span>
+        <span class="title-purple">SOCIETY</span>
+        // <span data-i18n="comunidadTitle">CTRL SOCIETY // COMUNIDAD</span>
+      </h1>
+      <p class="subtitle" style="max-width: 800px; margin: 0 auto;" data-i18n="comunidadSubtitle">
         Transmisiones en vivo vía NASA API, bitácora de misiones espaciales y foro abierto para exploradores del cosmos.
       </p>
     </header>
 
-    <!-- SELECTOR DE PESTAÑAS (TABS) -->
+    <!-- TABS -->
     <nav class="comunidad-tabs" aria-label="Secciones de la comunidad">
       <button type="button" class="tab-control-btn active" data-target="nasa">
         <span>🛰️</span>
-        <span>ACTUALIZACIONES & MISIONES NASA</span>
+        <span data-i18n="tabNasa">ACTUALIZACIONES &amp; MISIONES NASA</span>
       </button>
       <button type="button" class="tab-control-btn" data-target="forum">
         <span>💬</span>
-        <span>FORO DE EXPLORADORES</span>
+        <span data-i18n="tabForum">FORO DE EXPLORADORES</span>
       </button>
     </nav>
 
-    <!-- =========================================================
-         SECCIÓN 1: ACTUALIZACIONES Y MISIONES NASA (API LIVE)
-         ========================================================= -->
+    <!-- SECCIÓN 1: NASA -->
     <section id="section-nasa" class="nasa-section" aria-label="Actualizaciones y Misiones NASA">
-      <!-- APOD (FOTOGRAFÍA ASTRONÓMICA DEL DÍA) -->
+      <!-- APOD -->
       <article class="apod-hero-card" id="apod-card">
         <div class="apod-visual-wrap" id="apod-visual">
-          <div style="color: var(--text-muted); font-size: 0.9rem;">Sintonizando telescopio orbital...</div>
+          <div style="color: var(--text-muted); font-size: 0.9rem;" data-i18n="tuningTelescope">Sintonizando telescopio orbital...</div>
         </div>
         <div class="apod-info-wrap">
           <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
-            <span class="status-badge" id="apod-status-badge" style="background: rgba(46, 196, 182, 0.15); border: 1px solid var(--status-ok); color: var(--status-ok);">
+            <span class="status-badge" id="apod-status-badge"
+                  style="background: rgba(46, 196, 182, 0.15); border: 1px solid var(--status-ok); color: var(--status-ok);"
+                  data-i18n="apodLive">
               ● APOD EN VIVO (NASA API)
             </span>
-            <span class="apod-date" id="apod-date">CARGANDO FECHA...</span>
+            <span class="apod-date" id="apod-date" data-i18n="loadingDate">CARGANDO FECHA...</span>
           </div>
 
-          <h2 class="apod-title" id="apod-title">Conectando con la Red de Espacio Profundo...</h2>
-          <p class="apod-desc" id="apod-desc">
+          <h2 class="apod-title" id="apod-title" data-i18n="connectingDSN">Conectando con la Red de Espacio Profundo...</h2>
+          <p class="apod-desc" id="apod-desc" data-i18n="receivingData">
             Recibiendo paquete de datos científicos desde el archivo de astrofísica de la NASA...
           </p>
 
           <div class="apod-actions">
             <button type="button" class="btn-mission" id="btn-apod-share" style="width: auto; padding: 0.6rem 1.2rem;">
-              <span>💬 COMPARTIR EN EL FORO</span>
+              <span data-i18n="shareInForum">💬 COMPARTIR EN EL FORO</span>
               <span class="arrow">➔</span>
             </button>
           </div>
         </div>
       </article>
 
-      <!-- BARRA DE FILTROS Y BÚSQUEDA DE MISIONES NASA -->
+      <!-- FILTROS DE MISIONES -->
       <div class="mission-filters-bar">
         <div class="mission-categories" role="tablist" aria-label="Categorías de misiones">
-          <button type="button" class="filter-chip active" data-category="all">TODAS LAS MISIONES</button>
-          <button type="button" class="filter-chip" data-category="artemis">🚀 ARTEMIS & LUNA</button>
-          <button type="button" class="filter-chip" data-category="marte">🔴 MARTE ROVER</button>
-          <button type="button" class="filter-chip" data-category="jwst">🔭 TELESCOPIO WEBB</button>
-          <button type="button" class="filter-chip" data-category="voyager">🛰️ ESPACIO PROFUNDO</button>
-          <button type="button" class="filter-chip" data-category="iss">🛸 EEI / ORBITAL</button>
+          <button type="button" class="filter-chip active" data-category="all" data-i18n="filterAll">TODAS LAS MISIONES</button>
+          <button type="button" class="filter-chip" data-category="artemis" data-i18n="filterArtemis">🚀 ARTEMIS &amp; LUNA</button>
+          <button type="button" class="filter-chip" data-category="marte" data-i18n="filterMarte2">🔴 MARTE ROVER</button>
+          <button type="button" class="filter-chip" data-category="jwst" data-i18n="filterJwst">🔭 TELESCOPIO WEBB</button>
+          <button type="button" class="filter-chip" data-category="voyager" data-i18n="filterVoyager">🛰️ ESPACIO PROFUNDO</button>
+          <button type="button" class="filter-chip" data-category="iss" data-i18n="issFilter">🛸 EEI / ORBITAL</button>
         </div>
 
         <div style="display: flex; gap: 0.6rem; align-items: center; flex-wrap: wrap;">
           <div class="search-box">
             <span>🔍</span>
-            <input type="text" id="mission-search-input" placeholder="Buscar misión, rover o satélite..." />
+            <input type="text" id="mission-search-input"
+                   data-i18n-placeholder="searchPlaceholder"
+                   placeholder="Buscar misión, rover o satélite..." />
           </div>
-          <button type="button" id="btn-refresh-nasa" class="btn-back" style="padding: 0.45rem 0.85rem;" title="Sintonizar de nuevo con API de la NASA">
+          <button type="button" id="btn-refresh-nasa" class="btn-back"
+                  style="padding: 0.45rem 0.85rem;"
+                  data-i18n-title="syncTitle"
+                  data-i18n="syncBtn"
+                  title="Sintonizar de nuevo con API de la NASA">
             🔄 SINCRONIZAR
           </button>
         </div>
       </div>
 
-      <!-- GRID DE MISIONES NASA -->
+      <!-- GRID DE MISIONES -->
       <div class="nasa-missions-grid" id="nasa-missions-grid">
-        <!-- Renderizado dinámicamente vía comunidad.js -->
+        <!-- renderizado por comunidad.js -->
       </div>
     </section>
 
-    <!-- =========================================================
-         SECCIÓN 2: FORO DE EXPLORADORES (TRANSMISIONES)
-         ========================================================= -->
+    <!-- SECCIÓN 2: FORO -->
     <section id="section-forum" class="forum-section hidden" aria-label="Foro de la Comunidad">
-      <!-- FILA DE ESTADÍSTICAS HUD -->
+      <!-- ESTADÍSTICAS HUD -->
       <div class="forum-stats-row">
         <div class="stat-box">
           <span class="stat-icon">📡</span>
           <div class="stat-meta">
             <span class="stat-number" id="stat-total-transmissions">4</span>
-            <span class="stat-label">TRANSMISIONES REGISTRADAS</span>
+            <span class="stat-label" data-i18n="statTransmissions">TRANSMISIONES REGISTRADAS</span>
           </div>
         </div>
         <div class="stat-box">
           <span class="stat-icon">❤️</span>
           <div class="stat-meta">
             <span class="stat-number" id="stat-total-tunes">115</span>
-            <span class="stat-label">FRECUENCIAS SINTONIZADAS</span>
+            <span class="stat-label" data-i18n="statTuned">FRECUENCIAS SINTONIZADAS</span>
           </div>
         </div>
         <div class="stat-box">
           <span class="stat-icon">👨‍🚀</span>
           <div class="stat-meta">
-            <span class="stat-number" style="color: var(--status-ok);">ENLACE ACTIVO</span>
-            <span class="stat-label">CANAL COMUNITARIO ABIERTO</span>
+            <span class="stat-number" style="color: var(--status-ok);" data-i18n="linkActive">ENLACE ACTIVO</span>
+            <span class="stat-label" data-i18n="communityChannel">CANAL COMUNITARIO ABIERTO</span>
           </div>
         </div>
       </div>
 
-      <!-- PANEL DE NUEVA TRANSMISIÓN (PUBLICAR MENSAJE) -->
+      <!-- NUEVA TRANSMISIÓN -->
       <section class="new-post-panel" id="new-post-panel">
         <div class="panel-header">
-          <h2><span>📡</span> EMITIR NUEVA TRANSMISIÓN</h2>
-          <span class="hud-tag" style="margin-bottom: 0;">CANAL PÚBLICO DE TELEMETRÍA</span>
+          <h2><span>📡</span> <span data-i18n="newTransmission">EMITIR NUEVA TRANSMISIÓN</span></h2>
+          <span class="hud-tag" style="margin-bottom: 0;" data-i18n="publicChannel">CANAL PÚBLICO DE TELEMETRÍA</span>
         </div>
 
         <form id="new-post-form">
           <div class="post-form-grid">
             <div class="form-group">
-              <label for="post-author-input">TU DISTINTIVO O NOMBRE DE EXPLORADOR:</label>
-              <input type="text" id="post-author-input" placeholder="Ej. Cadete_Astro26 o Ing. Ramirez" required maxlength="32" />
+              <label for="post-author-input" data-i18n="authorLabel">TU DISTINTIVO O NOMBRE DE EXPLORADOR:</label>
+              <input type="text" id="post-author-input"
+                     data-i18n-placeholder="authorPlaceholder"
+                     placeholder="Ej. Cadete_Astro26 o Ing. Ramirez"
+                     required maxlength="32" />
             </div>
 
             <div class="form-group">
-              <label for="post-role-input">ROL O ESPECIALIDAD ESPACIAL:</label>
-              <input type="text" id="post-role-input" placeholder="Ej. Piloto Orbital / Astrónomo Aficionado" maxlength="40" />
+              <label for="post-role-input" data-i18n="roleLabel">ROL O ESPECIALIDAD ESPACIAL:</label>
+              <input type="text" id="post-role-input"
+                     data-i18n-placeholder="rolePlaceholder"
+                     placeholder="Ej. Piloto Orbital / Astrónomo Aficionado"
+                     maxlength="40" />
             </div>
 
             <div class="form-group">
-              <label>ELIGE TU AVATAR ESPACIAL:</label>
+              <label data-i18n="avatarLabel">ELIGE TU AVATAR ESPACIAL:</label>
               <input type="hidden" id="post-avatar-input" value="🚀" />
               <div class="avatar-selector">
                 <button type="button" class="avatar-choice selected" data-avatar="🚀" title="Nave Espacial">🚀</button>
@@ -174,67 +195,73 @@
             </div>
 
             <div class="form-group">
-              <label for="post-tag-input">FRECUENCIA / CATEGORÍA DEL TEMA:</label>
+              <label for="post-tag-input" data-i18n="tagLabel">FRECUENCIA / CATEGORÍA DEL TEMA:</label>
               <select id="post-tag-input">
-                <option value="SEÑALES DEL MUSEO">🏛️ SEÑALES DEL MUSEO (CTRL SOCIETY)</option>
-                <option value="MISIONES & ROVERS">🔴 MISIONES & ROVERS (MARTE/LUNA)</option>
-                <option value="TEORÍAS & ESPACIO">🌌 TEORÍAS & ESPACIO PROFUNDO</option>
-                <option value="EVENTOS NASA">🛰️ EVENTOS & LANZAMIENTOS NASA</option>
-                <option value="COMUNIDAD GENERAL">💬 CHARLA DE EXPLORADORES</option>
+                <option value="SEÑALES DEL MUSEO" data-i18n="tagMuseum">🏛️ SEÑALES DEL MUSEO (CTRL SOCIETY)</option>
+                <option value="MISIONES &amp; ROVERS" data-i18n="tagMissions">🔴 MISIONES &amp; ROVERS (MARTE/LUNA)</option>
+                <option value="TEORÍAS &amp; ESPACIO" data-i18n="tagTheories">🌌 TEORÍAS &amp; ESPACIO PROFUNDO</option>
+                <option value="EVENTOS NASA" data-i18n="tagNasa">🛰️ EVENTOS &amp; LANZAMIENTOS NASA</option>
+                <option value="COMUNIDAD GENERAL" data-i18n="tagGeneral">💬 CHARLA DE EXPLORADORES</option>
               </select>
             </div>
 
             <div class="form-group full-width">
-              <label for="post-title-input">TÍTULO DE LA TRANSMISIÓN:</label>
-              <input type="text" id="post-title-input" placeholder="Ej. Mi teoría sobre la señal recuperada del rover Sojourner" required maxlength="100" />
+              <label for="post-title-input" data-i18n="titleLabel">TÍTULO DE LA TRANSMISIÓN:</label>
+              <input type="text" id="post-title-input"
+                     data-i18n-placeholder="titlePlaceholder"
+                     placeholder="Ej. Mi teoría sobre la señal recuperada del rover Sojourner"
+                     required maxlength="100" />
             </div>
 
             <div class="form-group full-width">
-              <label for="post-content-input">MENSAJE / OBSERVACIÓN DE CAMPO:</label>
-              <textarea id="post-content-input" rows="4" placeholder="Escribe tu mensaje, hipótesis, saludo o análisis espacial para la tripulación..." required maxlength="1200"></textarea>
+              <label for="post-content-input" data-i18n="messageLabel">MENSAJE / OBSERVACIÓN DE CAMPO:</label>
+              <textarea id="post-content-input" rows="4"
+                        data-i18n-placeholder="messagePlaceholder"
+                        placeholder="Escribe tu mensaje, hipótesis, saludo o análisis espacial para la tripulación..."
+                        required maxlength="1200"></textarea>
             </div>
           </div>
 
           <button type="submit" class="btn-transmit">
-            <span>🚀 TRANSMITIR A LA RED ESPACIAL</span>
+            <span data-i18n="transmitBtn">🚀 TRANSMITIR A LA RED ESPACIAL</span>
           </button>
         </form>
       </section>
 
-      <!-- BARRA DE FILTROS DEL FORO -->
+      <!-- FILTROS DEL FORO -->
       <div class="mission-filters-bar forum-filter-bar">
         <div class="mission-categories" role="tablist" aria-label="Filtrar transmisiones">
-          <button type="button" class="filter-chip active" data-tag="all">TODAS LAS TRANSMISIONES</button>
-          <button type="button" class="filter-chip" data-tag="MUSEO">🏛️ SEÑALES MUSEO</button>
-          <button type="button" class="filter-chip" data-tag="MISIONES">🔴 MISIONES & ROVERS</button>
-          <button type="button" class="filter-chip" data-tag="TEORÍAS">🌌 TEORÍAS ESPACIALES</button>
-          <button type="button" class="filter-chip" data-tag="EVENTOS">🛰️ EVENTOS NASA</button>
+          <button type="button" class="filter-chip active" data-tag="all" data-i18n="filterAllForumTransmissions">TODAS LAS TRANSMISIONES</button>
+          <button type="button" class="filter-chip" data-tag="MUSEO" data-i18n="filterMuseumForum">🏛️ SEÑALES MUSEO</button>
+          <button type="button" class="filter-chip" data-tag="MISIONES" data-i18n="filterMissionsForum">🔴 MISIONES &amp; ROVERS</button>
+          <button type="button" class="filter-chip" data-tag="TEORÍAS" data-i18n="filterTheoriesForum">🌌 TEORÍAS ESPACIALES</button>
+          <button type="button" class="filter-chip" data-tag="EVENTOS" data-i18n="filterEventsForum">🛰️ EVENTOS NASA</button>
         </div>
       </div>
 
-      <!-- LISTA DE TRANSMISIONES / HILOS DEL FORO -->
+      <!-- LISTA DE TRANSMISIONES -->
       <div class="forum-threads-list" id="forum-threads-list">
-        <!-- Renderizado dinámicamente vía comunidad.js -->
+        <!-- renderizado por comunidad.js -->
       </div>
     </section>
   </main>
 
-  <!-- =========================================================
-       MODAL DE TELEMETRÍA DETALLADA NASA
-       ========================================================= -->
+  <!-- MODAL DE TELEMETRÍA NASA -->
   <div class="telemetry-modal" id="telemetry-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
     <div class="telemetry-modal-dialog">
-      <button type="button" class="modal-close-btn" id="modal-close-btn" aria-label="Cerrar telemetría">✕</button>
-      
+      <button type="button" class="modal-close-btn" id="modal-close-btn"
+              data-i18n-aria="ariaCloseModal" aria-label="Cerrar telemetría">✕</button>
+
       <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
-        <span class="hud-tag" id="modal-category">REGISTRO NASA OFICIAL</span>
-        <span class="nasa-card-date" id="modal-date">FECHA NO ESPECIFICADA</span>
+        <span class="hud-tag" id="modal-category" data-i18n="modalNasaRecord">REGISTRO NASA OFICIAL</span>
+        <span class="nasa-card-date" id="modal-date" data-i18n="modalNoDate">FECHA NO ESPECIFICADA</span>
       </div>
 
-      <h2 id="modal-title" style="font-family: var(--font-display); color: #fff; font-size: 1.4rem;">Cargando telemetría...</h2>
+      <h2 id="modal-title" style="font-family: var(--font-display); color: #fff; font-size: 1.4rem;"
+          data-i18n="modalLoadingTele">Cargando telemetría...</h2>
 
       <div class="modal-image-preview">
-        <img id="modal-img" src="" alt="Fotografía NASA" />
+        <img id="modal-img" src="" data-i18n-aria="modalNasaPhoto" alt="Fotografía NASA" />
       </div>
 
       <p id="modal-text" style="font-size: 1.02rem; line-height: 1.6; color: var(--text-main); white-space: pre-wrap;"></p>
@@ -242,15 +269,16 @@
       <div id="modal-tags" style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.5rem;"></div>
 
       <div style="display: flex; justify-content: flex-end; gap: 1rem; margin-top: 1rem; border-top: 1px solid rgba(168, 85, 247, 0.2); padding-top: 1rem;">
-        <button type="button" class="btn-back" onclick="closeTelemetryModal()">CERRAR VISOR</button>
+        <button type="button" class="btn-back" onclick="closeTelemetryModal()" data-i18n="closeVisor">CERRAR VISOR</button>
         <button type="button" class="btn-mission" style="width: auto;" onclick="quoteMissionToForum()">
-          <span>💬 CITAR EN EL FORO</span>
+          <span data-i18n="quoteInForum">💬 CITAR EN EL FORO</span>
         </button>
       </div>
     </div>
   </div>
 
   <!-- SCRIPTS -->
+  <script src="../js/translations.js"></script>
   <script src="../js/data.js"></script>
   <script src="../js/comunidad.js"></script>
 </body>

@@ -1,7 +1,9 @@
 window.SectorMinigames = window.SectorMinigames || {};
 
 window.SectorMinigames.marte = {
-  label: "TORMENTA MARCIANA · RÁFAGAS DE VIENTO",
+  get label() {
+    return (typeof I18N !== "undefined") ? I18N.t("minigameLabelMarte") : "TORMENTA MARCIANA · RÁFAGAS DE VIENTO";
+  },
   physics: "mars",
   signalDrain: 0.058,
   playerSpeed: 0.68,
