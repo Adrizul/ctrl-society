@@ -1,7 +1,24 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // IMPORTANTE: Ajusta esta clave si en tu hub.js/sector.js usas otro nombre en localStorage
   const STORAGE_KEY = "lost_signal_restored";
   const restoredIds = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+
+  let currentSpeakingBtn = null;
+
+  if ("speechSynthesis" in window) {
+    window.speechSynthesis.getVoices();
+    window.speechSynthesis.onvoiceschanged = () => window.speechSynthesis.getVoices();
+  }
+
+  function stopMuseumTTS() {
+    if ("speechSynthesis" in window) {
+      window.speechSynthesis.cancel();
+    }
+    if (currentSpeakingBtn) {
+      currentSpeakingBtn.textContent = "▶ ESCUCHAR NARRACIÓN";
+      currentSpeakingBtn.classList.remove("is-speaking");
+      currentSpeakingBtn = null;
+    }
+  }
 
   const allObjects = [];
   Object.entries(SECTORS_DATA).forEach(([sectorKey, sector]) => {
@@ -19,6 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const lockedSection = document.getElementById("museum-locked");
   const unlockedSection = document.getElementById("museum-unlocked");
+  const grid = document.getElementById("museum-catalog");
 
   if (count >= total && total > 0) {
     lockedSection.classList.add("hidden");
@@ -27,7 +45,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function renderCatalog(filter) {
-    const grid = document.getElementById("museum-catalog");
     grid.innerHTML = "";
 
     const filtered = filter === "all"
@@ -52,18 +69,65 @@ document.addEventListener("DOMContentLoaded", () => {
           <p class="mission-meta">${obj.year}</p>
           <p class="museum-piece-story">${obj.story}</p>
           <p class="source-tag">Fuente: ${obj.source}</p>
-          <audio controls src="${obj.audio}"></audio>
+          <button
+            type="button"
+            class="btn-tts museum-tts-btn"
+            data-name="${encodeURIComponent(obj.name)}"
+            data-story="${encodeURIComponent(obj.story)}"
+          >
+            ▶ ESCUCHAR NARRACIÓN
+          </button>
         </div>
       `;
       grid.appendChild(card);
     });
   }
 
+  grid?.addEventListener("click", (e) => {
+    const btn = e.target.closest(".museum-tts-btn");
+    if (!btn) return;
+
+    if (!("speechSynthesis" in window)) {
+      alert("Tu navegador no soporta lectura de voz automática.");
+      return;
+    }
+
+    const wasSameBtn = currentSpeakingBtn === btn;
+    stopMuseumTTS();
+    if (wasSameBtn) return;
+
+    const pieceName = decodeURIComponent(btn.dataset.name || "");
+    const pieceStory = decodeURIComponent(btn.dataset.story || "");
+    const utterance = new SpeechSynthesisUtterance(`${pieceName}. ${pieceStory}`);
+
+    const voices = window.speechSynthesis.getVoices();
+    const spanishVoice =
+      voices.find((v) => v.lang.includes("es-MX")) ||
+      voices.find((v) => v.lang.includes("es-US")) ||
+      voices.find((v) => v.lang.startsWith("es"));
+
+    if (spanishVoice) utterance.voice = spanishVoice;
+    utterance.lang = "es-MX";
+    utterance.rate = 1.02;
+    utterance.pitch = 1.0;
+
+    utterance.onend = stopMuseumTTS;
+    utterance.onerror = stopMuseumTTS;
+
+    currentSpeakingBtn = btn;
+    btn.textContent = "⏹ DETENER NARRACIÓN";
+    btn.classList.add("is-speaking");
+    window.speechSynthesis.speak(utterance);
+  });
+
   document.querySelectorAll("#museum-filters .tab-btn").forEach((btn) => {
     btn.addEventListener("click", () => {
+      stopMuseumTTS();
       document.querySelectorAll("#museum-filters .tab-btn").forEach((b) => b.classList.remove("active"));
       btn.classList.add("active");
       renderCatalog(btn.dataset.filter);
     });
   });
+
+  window.addEventListener("beforeunload", stopMuseumTTS);
 });
