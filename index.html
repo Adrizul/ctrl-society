@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/base.css" />
-  <link rel="stylesheet" href="css/hub.css" />
+  <link rel="stylesheet" href="css/hub.css?v=3" />
 </head>
 <body>
   <div class="space-bg" aria-hidden="true">
@@ -39,7 +39,7 @@
       </div>
     </header>
 
-    <!-- CARRUSEL DE SECTORES -->
+    <!-- CARRUSEL DE PLANETAS GIGANTES -->
     <section class="sector-carousel" aria-label="Sectores del Museo Espacial">
       <div class="carousel-controls-wrapper">
         <button type="button" class="carousel-btn prev" id="carousel-prev" aria-label="Sector anterior">
@@ -48,16 +48,18 @@
 
         <div class="carousel-viewport" id="carousel-viewport">
           <div class="carousel-track" id="carousel-track">
+            
             <!-- SECTOR 01: LA LUNA -->
-            <article class="mission-card">
-              <div class="card-top">
+            <article class="planet-slide">
+              <div class="planet-hud-meta">
                 <span class="mission-code">SECTOR 01 / 03</span>
                 <span class="status-badge lost" id="badge-luna">0 / 4 SEÑALES</span>
               </div>
 
-              <div class="hologram-stage">
-                <div class="holo-ring"></div>
-                <div class="holo-avatar">
+              <div class="giant-planet-stage">
+                <div class="planet-orbit-ring"></div>
+                <div class="planet-orbit-ring inner"></div>
+                <div class="planet-sphere">
                   <img
                     src="assets/Imagenes/sectores/destino_luna.png"
                     alt="La Luna"
@@ -66,33 +68,30 @@
                   />
                   <span class="fallback-icon">🌕</span>
                 </div>
-                <div class="holo-base"></div>
+                <div class="planet-base-glow"></div>
               </div>
 
-              <div class="card-body">
+              <div class="planet-info">
                 <h2>LA LUNA</h2>
-                <p class="mission-meta">384,400 km • Programa Apolo y Surveyor</p>
-                <p class="mission-desc">
-                  Accede a la sala lunar del museo para explorar los módulos Apolo, rovers eléctricos, paquetes ALSEP y sondas Surveyor.
-                </p>
+                <p class="planet-hook">384,400 km • Huellas del Programa Apolo y Surveyor</p>
+                <a href="html/sector.html?sector=luna" class="btn-mission planet-cta">
+                  <span>EXPLORAR SECTOR LUNAR</span>
+                  <span class="arrow">➔</span>
+                </a>
               </div>
-
-              <a href="html/sector.html?sector=luna" class="btn-mission">
-                <span>ENTRAR AL SECTOR LUNAR</span>
-                <span class="arrow">➔</span>
-              </a>
             </article>
 
             <!-- SECTOR 02: MARTE -->
-            <article class="mission-card">
-              <div class="card-top">
+            <article class="planet-slide">
+              <div class="planet-hud-meta">
                 <span class="mission-code">SECTOR 02 / 03</span>
                 <span class="status-badge lost" id="badge-marte">0 / 5 SEÑALES</span>
               </div>
 
-              <div class="hologram-stage">
-                <div class="holo-ring"></div>
-                <div class="holo-avatar">
+              <div class="giant-planet-stage">
+                <div class="planet-orbit-ring"></div>
+                <div class="planet-orbit-ring inner"></div>
+                <div class="planet-sphere">
                   <img
                     src="assets/Imagenes/sectores/destino_marte.png"
                     alt="Planeta Marte"
@@ -101,33 +100,30 @@
                   />
                   <span class="fallback-icon">🔴</span>
                 </div>
-                <div class="holo-base"></div>
+                <div class="planet-base-glow"></div>
               </div>
 
-              <div class="card-body">
+              <div class="planet-info">
                 <h2>MARTE</h2>
-                <p class="mission-meta">225 Millones km • Rovers, Landers e Ingenuity</p>
-                <p class="mission-desc">
-                  Visita la exhibición marciana y rescata la telemetría de Sojourner, Spirit, Opportunity, Viking, Phoenix, InSight e Ingenuity.
-                </p>
+                <p class="planet-hook">225 Millones km • Rovers, Landers e Ingenuity</p>
+                <a href="html/sector.html?sector=marte" class="btn-mission planet-cta">
+                  <span>EXPLORAR SECTOR MARCIANO</span>
+                  <span class="arrow">➔</span>
+                </a>
               </div>
-
-              <a href="html/sector.html?sector=marte" class="btn-mission">
-                <span>ENTRAR AL SECTOR MARCIANO</span>
-                <span class="arrow">➔</span>
-              </a>
             </article>
 
             <!-- SECTOR 03: ESPACIO PROFUNDO -->
-            <article class="mission-card">
-              <div class="card-top">
+            <article class="planet-slide">
+              <div class="planet-hud-meta">
                 <span class="mission-code">SECTOR 03 / 03</span>
                 <span class="status-badge lost" id="badge-espacio">0 / 4 SEÑALES</span>
               </div>
 
-              <div class="hologram-stage">
-                <div class="holo-ring"></div>
-                <div class="holo-avatar">
+              <div class="giant-planet-stage">
+                <div class="planet-orbit-ring"></div>
+                <div class="planet-orbit-ring inner"></div>
+                <div class="planet-sphere">
                   <img
                     src="assets/Imagenes/sectores/destino_espacio.png"
                     alt="Espacio Profundo"
@@ -136,22 +132,19 @@
                   />
                   <span class="fallback-icon">🛰️</span>
                 </div>
-                <div class="holo-base"></div>
+                <div class="planet-base-glow"></div>
               </div>
 
-              <div class="card-body">
+              <div class="planet-info">
                 <h2>ESPACIO PROFUNDO</h2>
-                <p class="mission-meta">Asteroides, Planetas Exteriores y Exoplanetas</p>
-                <p class="mission-desc">
-                  Explora las naves Dawn, NEAR Shoemaker, Pioneer 10 y 11, y el telescopio cazador de mundos Kepler.
-                </p>
+                <p class="planet-hook">Más allá de la órbita • Sondas pioneras y cazadores de mundos</p>
+                <a href="html/sector.html?sector=espacio" class="btn-mission planet-cta">
+                  <span>EXPLORAR ESPACIO PROFUNDO</span>
+                  <span class="arrow">➔</span>
+                </a>
               </div>
-
-              <a href="html/sector.html?sector=espacio" class="btn-mission">
-                <span>ENTRAR A ESPACIO PROFUNDO</span>
-                <span class="arrow">➔</span>
-              </a>
             </article>
+
           </div>
         </div>
 
