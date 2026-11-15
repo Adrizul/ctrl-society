@@ -2,7 +2,7 @@ const params = new URLSearchParams(window.location.search);
 const sectorKey = SECTORS_DATA[params.get("sector")] ? params.get("sector") : "luna";
 const sector = SECTORS_DATA[sectorKey];
 
-document.getElementById("theme-stylesheet").href = `../Css/themes/${sectorKey}.css`;
+document.getElementById("theme-stylesheet").href = `../css/themes/${sectorKey}.css`;
 
 const savedIds = JSON.parse(localStorage.getItem("lost_signal_restored") || "[]");
 const restoredSet = new Set(savedIds);
@@ -184,8 +184,86 @@ function startMinigameView() {
   });
 }
 
+/* === SÍNTESIS DE VOZ (WEB SPEECH API) === */
 const modalEl = document.getElementById("modal-discovery");
-const audioEl = document.getElementById("discovery-audio");
+
+function setupTtsButton() {
+  let btn = document.getElementById("btn-tts-toggle");
+  if (!btn) {
+    const oldAudio = document.getElementById("discovery-audio");
+    btn = document.createElement("button");
+    btn.type = "button";
+    btn.id = "btn-tts-toggle";
+    btn.className = "btn-tts";
+    btn.textContent = "▶ ESCUCHAR NARRACIÓN";
+
+    if (oldAudio && oldAudio.parentNode) {
+      oldAudio.parentNode.replaceChild(btn, oldAudio);
+    }
+  }
+  return btn;
+}
+
+const ttsBtn = setupTtsButton();
+
+if ("speechSynthesis" in window) {
+  window.speechSynthesis.getVoices();
+  window.speechSynthesis.onvoiceschanged = () => window.speechSynthesis.getVoices();
+}
+
+function resetTtsButton() {
+  if (!ttsBtn) return;
+  ttsBtn.textContent = "▶ ESCUCHAR NARRACIÓN";
+  ttsBtn.classList.remove("is-speaking");
+}
+
+function stopStorySpeech() {
+  if ("speechSynthesis" in window) {
+    window.speechSynthesis.cancel();
+  }
+  resetTtsButton();
+}
+
+function toggleStorySpeech() {
+  if (!("speechSynthesis" in window)) {
+    alert("Tu navegador no soporta lectura de voz automática.");
+    return;
+  }
+
+  if (window.speechSynthesis.speaking) {
+    stopStorySpeech();
+    return;
+  }
+
+  window.speechSynthesis.cancel();
+
+  const textToRead = `${currentObject.name}. ${currentObject.story}`;
+  const utterance = new SpeechSynthesisUtterance(textToRead);
+  const voices = window.speechSynthesis.getVoices();
+  const spanishVoice =
+    voices.find((v) => v.lang.includes("es-MX")) ||
+    voices.find((v) => v.lang.includes("es-US")) ||
+    voices.find((v) => v.lang.startsWith("es"));
+
+  if (spanishVoice) utterance.voice = spanishVoice;
+  utterance.lang = "es-MX";
+  utterance.rate = 1.02;
+  utterance.pitch = 1.0;
+
+  utterance.onstart = () => {
+    ttsBtn.textContent = "⏹ DETENER NARRACIÓN";
+    ttsBtn.classList.add("is-speaking");
+  };
+
+  utterance.onend = resetTtsButton;
+  utterance.onerror = resetTtsButton;
+
+  window.speechSynthesis.speak(utterance);
+}
+
+if (ttsBtn) {
+  ttsBtn.addEventListener("click", toggleStorySpeech);
+}
 
 function openDiscoveryModal() {
   restoredSet.add(currentObject.id);
@@ -197,17 +275,18 @@ function openDiscoveryModal() {
   document.getElementById("discovery-img").src = currentObject.realPhoto;
   document.getElementById("discovery-source").textContent = `FUENTE: ${currentObject.source.toUpperCase()}`;
 
-  audioEl.src = currentObject.audio;
+  stopStorySpeech();
   modalEl.classList.remove("hidden");
 }
 
 function closeDiscoveryModal() {
-  audioEl.pause();
+  stopStorySpeech();
   modalEl.classList.add("hidden");
   renderObjectCards();
   showView("museum");
 }
 
+window.addEventListener("beforeunload", stopStorySpeech);
 document.getElementById("btn-close-modal").addEventListener("click", closeDiscoveryModal);
 document.getElementById("btn-return-sector").addEventListener("click", closeDiscoveryModal);
 

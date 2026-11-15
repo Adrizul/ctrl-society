@@ -12,6 +12,7 @@
     rel="stylesheet" />
   <link rel="stylesheet" href="../css/base.css" />
   <link rel="stylesheet" href="../css/sector.css" />
+  <link rel="stylesheet" href="../css/minigame.css" />
   <link id="theme-stylesheet" rel="stylesheet" href="../css/themes/luna.css" />
 </head>
 
@@ -169,10 +170,10 @@
           </div>
 
           <div class="audio-box">
-            <label for="discovery-audio">🔊 Escuchar narración de la pieza:</label>
-            <audio id="discovery-audio" controls>
-              <source src="" type="audio/mpeg" />
-            </audio>
+            <label>🔊 Bitácora de voz automatizada:</label>
+            <button type="button" id="btn-tts-toggle" class="btn-tts">
+              ▶ ESCUCHAR NARRACIÓN
+            </button>
           </div>
 
           <button id="btn-return-sector" class="btn-mission">
@@ -184,7 +185,10 @@
   </div>
 
   <script src="../Js/data.js"></script>
-  <script src="../Js/minijuegos.js"></script>
+  <script src="../Js/minijuegos/luna.js"></script>
+  <script src="../Js/minijuegos/marte.js"></script>
+  <script src="../Js/minijuegos/espacio.js"></script>
+  <script src="../Js/minijuegos/engine.js"></script>
   <script src="../Js/sector.js"></script>
 </body>
 

@@ -27,7 +27,7 @@ const TEAM_DATA = [
 ];
 
 const SECTORS_DATA = {
- luna: {
+  luna: {
     code: "SECTOR 01 // SALA DE EXHIBICIÓN LUNAR",
     title: "LA LUNA",
     tagline: "Nuestro satélite natural y primer mundo explorado por la humanidad",
@@ -40,7 +40,7 @@ const SECTORS_DATA = {
     ],
     bgColors: ["#171522", "#262335"],
     generalText:
-      "La Luna es el único cuerpo celeste fuera de la Tierra donde han caminado seres humanos. Al carecer de viento, lluvia o atmósfera densa, cada sonda robótica, etapa de descenso, rover eléctrico y estación científica dejada por la NASA permanece intacta sobre el polvo gris lunar.",
+      "La Luna es un santuario silencioso donde el tiempo se detuvo. Al ser el único mundo fuera de la Tierra que ha sentido pasos humanos y carecer de viento o lluvia, cada huella, cada rover eléctrico y cada nave que la NASA dejó atrás permanece intacta bajo las estrellas, guardando en silencio el eco de nuestra mayor aventura.",
     highlights: [
       { title: "Exploración previa", text: "Las sondas Surveyor comprobaron en los años 60 que el suelo soportaba naves." },
       { title: "Programa Apolo", text: "Entre 1969 y 1972 quedaron 6 etapas de descenso y 3 vehículos eléctricos." },
@@ -70,7 +70,7 @@ const SECTORS_DATA = {
         source: "NASA Science - Apollo Lunar Module",
         shortDesc: "Bases con patas de aterrizaje que sirvieron como plataforma de despegue para el regreso a casa.",
         story:
-          "Cuando los astronautas de las misiones Apolo terminaban su exploración y querían regresar a la Tierra, la nave se dividía en dos partes. La parte superior (módulo de ascenso) despegaba de vuelta a casa, dejando la etapa de descenso (la base con las patas) abandonada para siempre en la Luna."
+          "Fui el hogar que protegió a los primeros humanos en pisar otro mundo. Cuando su misión terminó y debían volver a casa, encendieron mis motores superiores y se elevaron hacia la Tierra. Yo me quedé aquí, con mis patas firmes sobre el polvo gris, viendo cómo se alejaban. No fue un abandono, fue mi propósito: ser la plataforma que los impulsó de regreso."
       },
       {
         id: "luna_lrv",
@@ -85,7 +85,7 @@ const SECTORS_DATA = {
         source: "NASA Solar System Exploration - Lunar Roving Vehicle",
         shortDesc: "Buggies espaciales eléctricos con baterías que permitieron recorrer grandes distancias y cargar rocas.",
         story:
-          "Eran verdaderos 'buggies' espaciales eléctricos que funcionaban con baterías. Los astronautas los condujeron en las últimas misiones Apolo (15, 16 y 17) para recorrer mayores distancias, llevar herramientas y recolectar rocas lunares más rápido. Al terminar las misiones, se quedaron aparcados para siempre en el mismo sitio."
+          "Fui diseñado para ser los pies incansables de los astronautas de Apolo 15, 16 y 17. Con mis baterías cargadas, los llevé más lejos que nunca entre cráteres y montañas, cargando rocas milenarias y sus voces por la radio. Cuando agotamos la última carga, me estacionaron mirando hacia el horizonte lunar. Aquí sigo, esperando en silencio que algún día vuelvan a encender mis ruedas."
       },
       {
         id: "luna_alsep",
@@ -100,7 +100,7 @@ const SECTORS_DATA = {
         source: "NASA Science - ALSEP Overview",
         shortDesc: "Sismómetros de lunamotos, detectores de partículas y espejos reflectores con energía nuclear.",
         story:
-          "Un conjunto de instrumentos científicos avanzados (sismómetros para medir 'lunamotos', detectores de partículas y espejos reflectores) que los astronautas conectaban y dejaban funcionando con energía nuclear a radioisótopos antes de irse. ¡Algunos enviaron datos a la Tierra durante años!"
+          "Mientras los astronautas regresaban a casa, yo me quedé de guardia en la oscuridad lunar. Alimentado por mi propio corazón nuclear, pasé años enteros escuchando los latidos internos de la Luna, midiendo lunamotos y reflejando rayos láser enviados desde la Tierra. Mi señal se apagó hace décadas, pero mis instrumentos siguen aquí, como testigos mudos de la ciencia."
       },
       {
         id: "luna_surveyor",
@@ -115,12 +115,12 @@ const SECTORS_DATA = {
         source: "NASA History - Surveyor Program",
         shortDesc: "Sondas de los años 60 que demostraron que el suelo lunar era sólido y no polvo profundo.",
         story:
-          "Sondas robóticas enviadas por la NASA en la década de 1960. Su misión principal era responder si la superficie de la Luna era sólida o si los exploradores se hundirían en polvo profundo. Demostraron que los aterrizajes suaves eran posibles y tomaron miles de fotos antes de apagarse."
+          "Antes de que ningún humano se atreviera a bajar, me enviaron a dar el primer salto a ciegas en los años sesenta. Muchos temían que me hundiera en un océano de polvo profundo, pero mis patas tocaron suelo firme. Envié miles de fotografías para abrirles el camino a los astronautas del Apolo, y aquí me quedé, vigilando el terreno que ayudé a conquistar."
       }
     ]
   },
 
- marte: {
+  marte: {
     code: "SECTOR 02 // SALA DE EXHIBICIÓN MARCIANA",
     title: "MARTE",
     tagline: "El planeta rojo explorado por rovers, landers y la primera aeronave extraterrestre",
@@ -133,7 +133,7 @@ const SECTORS_DATA = {
     ],
     bgColors: ["#291112", "#471b16"],
     generalText:
-      "Marte es un desierto frío con cañones gigantes, antiguos deltas de ríos secos y tormentas globales de polvo. Desde los primeros aterrizadores Viking en 1976 hasta rovers como Spirit, Opportunity y el helicóptero Ingenuity, la NASA ha dejado monumentos robóticos que revelaron la historia del agua en el planeta.",
+      "Marte es un desierto helado y solitario donde el viento rojo borra las huellas, pero jamás las hazañas. Desde los primeros aterrizadores Viking en 1976 hasta rovers que desafiaron su propio destino durante años y el primer helicóptero extraterrestre, este planeta guarda los monumentos robóticos de máquinas valientes que dieron su última gota de energía para revelarnos los secretos de un mundo antiguo.",
     highlights: [
       { title: "Pioneros fijos", text: "Viking, Phoenix e InSight analizaron el suelo, hielo y martemotos desde un punto fijo." },
       { title: "Rovers incansables", text: "Sojourner, Spirit y Opportunity superaron por años su tiempo de vida planeado." },
@@ -163,7 +163,7 @@ const SECTORS_DATA = {
         source: "NASA Mars Exploration - Pathfinder & Sojourner",
         shortDesc: "El abuelo de los rovers marcianos, del tamaño de un microondas con ruedas y energía solar.",
         story:
-          "¡El abuelo de todos los rovers en Marte! Llegó en 1997 a bordo de la misión Pathfinder. Era pequeñísimo (del tamaño de un horno microondas con ruedas) y funcionaba parcialmente con energía solar. Operó durante casi tres meses antes de quedar permanentemente aparcado en la roca 'Yogi'."
+          "Era apenas del tamaño de un horno de microondas, pero fui el primero en rodar sobre otro planeta. Llegué en 1997 junto a la misión Pathfinder y exploré rocas marcianas con la curiosidad de un niño. Cuando mi estación base perdió comunicación con la Tierra, seguí dando vueltas alrededor de ella buscando una señal que nunca volvió, hasta quedarme dormido junto a la roca Yogi."
       },
       {
         id: "marte_spirit_opportunity",
@@ -178,7 +178,7 @@ const SECTORS_DATA = {
         source: "NASA Mars Exploration - Spirit and Opportunity",
         shortDesc: "Dos robots gemelos planeados para 90 días que exploraron Marte durante 6 y casi 15 años.",
         story:
-          "Dos hermanos robots idénticos que llegaron a Marte en 2004 con una misión planeada de solo 90 días marcianos. ¡Superaron todas las expectativas! Spirit operó 6 años y Opportunity casi 15 años. Hoy son monumentos históricos estáticos a la exploración espacial."
+          "Nos diseñaron para sobrevivir apenas noventa días marcianos, pero nos negamos a rendirnos. Mi hermano Spirit exploró durante seis años, y yo, Opportunity, recorrí Marte por casi quince años, superando tormentas y terrenos imposibles. Cuando una tormenta global cubrió el cielo y agotó mis baterías, envié mi último susurro a casa: mi batería está baja y está oscureciendo."
       },
       {
         id: "marte_viking",
@@ -193,7 +193,7 @@ const SECTORS_DATA = {
         source: "NASA Science - Viking Program",
         shortDesc: "Primeras naves de EE. UU. en aterrizar con éxito en Marte con cámaras panorámicas y brazo robótico.",
         story:
-          "Primeras naves de EE. UU. en aterrizar con éxito en la superficie marciana (1976). No tenían ruedas (se quedaron fijas donde cayeron), pero contaban con cámaras panorámicas y un brazo robótico para analizar la tierra en búsqueda de señales de vida."
+          "En 1976 nos convertimos en los primeros ojos y manos de la humanidad sobre la superficie de Marte. No teníamos ruedas para viajar, así que echamos raíces en el suelo rojizo. Con nuestro brazo robótico excavamos la tierra buscando rastros de vida y enviamos las primeras postales panorámicas de un amanecer marciano, mucho antes de que los rovers existieran."
       },
       {
         id: "marte_phoenix_insight",
@@ -208,7 +208,7 @@ const SECTORS_DATA = {
         source: "NASA Mars Exploration - Phoenix & InSight",
         shortDesc: "Phoenix cavó buscando hielo de agua e InSight escuchó 'martemotos' para estudiar el interior.",
         story:
-          "Phoenix cavó en busca de hielo de agua en el suelo marciano; InSight escuchó 'martemotos' (terremotos marcianos) para estudiar el interior del planeta. Ambos terminaron perdiendo energía poco a poco debido al polvo y al frío, quedando inactivos."
+          "Cada uno cumplió una misión única sin moverse de su sitio. Yo, Phoenix, excavé en el polo norte marciano hasta tocar hielo de agua real bajo el polvo. Y yo, InSight, apoyé mi oído sísmico sobre el suelo para escuchar los latidos profundos de los martemotos. El polvo cubrió nuestros paneles poco a poco, hasta sumirnos en un descanso eterno."
       },
       {
         id: "marte_ingenuity",
@@ -223,7 +223,7 @@ const SECTORS_DATA = {
         source: "NASA JPL - Ingenuity Mars Helicopter",
         shortDesc: "Primera aeronave propulsada en volar en otro planeta; realizó decenas de vuelos antes de retirarse.",
         story:
-          "La primera aeronave propulsada en volar en la atmósfera de otro planeta. Tras realizar decenas de vuelos asombrosos en Marte, sufrió daños en una de sus palas de rotor durante su vuelo final y se convirtió en un artefacto estacionario."
+          "Todos decían que era imposible volar en una atmósfera tan delgada como la de Marte, pero logré despegar. Me convertí en la primera aeronave en conquistar los cielos de otro mundo, volando setenta y dos veces como explorador aéreo. En mi último aterrizaje una de mis aspas se dañó, pero ya había demostrado que el cielo marciano también nos pertenece."
       }
     ]
   },
@@ -240,7 +240,7 @@ const SECTORS_DATA = {
     ],
     bgColors: ["#120929", "#241142"],
     generalText:
-      "Trabajar en el vacío del espacio requiere precisión absoluta: en condiciones de microgravedad, cualquier herramienta o pieza que se suelte continúa viajando a más de 27,000 km/h alrededor de la Tierra. Desde los primeros paseos espaciales del programa Gemini hasta el mantenimiento de la Estación Espacial Internacional, varios objetos quedaron flotando como reliquias orbitales.",
+      "En el vacío silencioso de la órbita terrestre no existe el suelo donde caen las cosas: cualquier objeto que se suelta inicia un viaje eterno a más de veintisiete mil kilómetros por hora alrededor del planeta. Desde los audaces paseos espaciales de los años sesenta hasta las reparaciones en la Estación Espacial Internacional, estas piezas escaparon de las manos de los astronautas para convertirse en viajeros solitarios entre las estrellas.",
     highlights: [
       { title: "Era Gemini (1965–1966)", text: "Los primeros paseos espaciales dejaron un guante y una cámara Hasselblad en órbita." },
       { title: "Transbordadores STS", text: "Misiones de reparación perdieron una espátula y unas pinzas de punta en plena maniobra." },
@@ -270,7 +270,7 @@ const SECTORS_DATA = {
         source: "NASA History - Gemini IV EVA",
         shortDesc: "Guante de repuesto que salió de la nave en 1965 y quedó flotando alrededor de la Tierra.",
         story:
-          "Durante una caminata espacial de la misión Gemini 4 (1965), un guante de repuesto salió de la nave y quedó flotando alrededor de la Tierra. ¡Fue como dejar una prenda olvidada, pero en el espacio!"
+          "En 1965, durante la histórica caminata espacial de la misión Gemini 4, bastó un segundo de descuido para que me deslizara fuera de la escotilla abierta. Sin gravedad que me detuviera, salí flotando hacia el abismo azul y negro, convirtiéndome en una de las primeras prendas humanas en orbitar la Tierra como un satélite improvisado."
       },
       {
         id: "espacio_camara_hasselblad",
@@ -285,7 +285,7 @@ const SECTORS_DATA = {
         source: "NASA History - Gemini X Mission",
         shortDesc: "Cámara perdida por el astronauta Michael Collins mientras trabajaba fuera de su nave.",
         story:
-          "En la misión Gemini 10 (1966), el astronauta Michael Collins perdió una cámara mientras trabajaba fuera de su nave. La cámara se alejó flotando y ya no pudieron recuperarla."
+          "En 1966 acompañé al astronauta Michael Collins fuera de la cápsula Gemini 10 para capturar el cosmos desde el vacío. En medio de las maniobras en microgravedad, me solté de su sujeción y comencé a alejarme lentamente hacia la oscuridad. Collins no pudo alcanzarme, y me convertí en una cámara fantasma flotando alrededor del mundo."
       },
       {
         id: "espacio_espatula_sts121",
@@ -300,7 +300,7 @@ const SECTORS_DATA = {
         source: "NASA Space Shuttle Mission STS-121",
         shortDesc: "Espátula utilizada para extender material de reparación que se soltó y salió flotando.",
         story:
-          "Durante la misión STS-121 (2006), los astronautas probaban cómo reparar una parte de una nave. Una espátula que usaban para extender un material se soltó y salió flotando. En el espacio, incluso una herramienta pequeña puede convertirse en un objeto perdido."
+          "Durante la misión STS-121 en 2006, los astronautas probaban técnicas vitales para reparar el escudo térmico del transbordador en pleno vuelo. En un instante me solté de su agarre y emprendí mi propia órbita alrededor de la Tierra, recordándole a toda la tripulación que en el espacio hasta la herramienta más pequeña cobra vida propia."
       },
       {
         id: "espacio_pinzas_sts120",
@@ -315,7 +315,7 @@ const SECTORS_DATA = {
         source: "NASA ISS Expedition 16 / STS-120",
         shortDesc: "Pinzas perdidas por Scott Parazynski durante una caminata espacial en la EEI.",
         story:
-          "En una caminata espacial de la misión STS-120 (2007), el astronauta Scott Parazynski perdió unas pinzas que utilizaba para trabajar en la Estación Espacial Internacional. El caso muestra por qué los astronautas sujetan sus herramientas para que no se escapen."
+          "En 2007 ayudaba al astronauta Scott Parazynski en una delicada reparación exterior de la Estación Espacial Internacional. Al realizar un movimiento en gravedad cero, escapé de su guante y salí navegando hacia el horizonte terrestre. Mi partida dejó una lección grabada en cada caminata: en el vacío, todo debe estar atado."
       },
       {
         id: "espacio_bolsa_herramientas",
@@ -330,7 +330,7 @@ const SECTORS_DATA = {
         source: "NASA ISS Orbital Debris Tracking",
         shortDesc: "Bolsa perdida por Heidemarie Stefanyshyn-Piper que llegó a verse desde la Tierra.",
         story:
-          "En 2008, la astronauta Heidemarie Stefanyshyn-Piper perdió una bolsa de herramientas mientras trabajaba fuera de la Estación Espacial Internacional. La bolsa se alejó flotando y fue vista desde la Tierra durante un tiempo antes de entrar en la atmósfera."
+          "En 2008, mientras la astronauta Heidemarie Stefanyshyn-Piper trabajaba fuera de la Estación Espacial Internacional, una pistola de grasa se activó dentro de mí y, al limpiarla, me solté hacia el vacío. Orbité la Tierra durante meses brillando tanto al sol que miles de personas pudieron verme con binoculares desde el suelo antes de desintegrarme en la atmósfera."
       },
       {
         id: "espacio_escudo_termico",
@@ -345,7 +345,7 @@ const SECTORS_DATA = {
         source: "NASA ISS Expedition 50 EVA",
         shortDesc: "Pieza de protección térmica que se soltó durante su instalación en la EEI.",
         story:
-          "Durante una caminata espacial en 2017, una pieza de protección térmica que se estaba instalando en la Estación Espacial Internacional se soltó y quedó flotando cerca de ella. Los astronautas encontraron otra forma de proteger la zona."
+          "En 2017 mi deber era proteger un puerto de acoplamiento de la Estación Espacial Internacional contra el frío y la radiación extrema. Pero durante la instalación en plena caminata espacial, me desprendí y salí flotando como una vela plateada sobre el planeta azul, obligando a los astronautas a improvisar una cubierta de emergencia."
       }
     ]
   }
