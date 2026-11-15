@@ -296,6 +296,15 @@ a {
   object-fit: cover;
   transform: scale(1.24);
   display: block;
+  transition: filter 0.45s ease;
+}
+
+.holo-avatar.is-locked img {
+  filter: grayscale(1) brightness(0.78) contrast(1.12);
+}
+
+.holo-avatar.is-restored img {
+  filter: none;
 }
 
 .fallback-icon {

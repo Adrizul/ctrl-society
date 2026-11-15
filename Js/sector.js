@@ -86,15 +86,6 @@ function renderObjectCards() {
 
   sector.objects.forEach((obj) => {
     const isRestored = restoredSet.has(obj.id);
-    const holoVisual = isRestored
-      ? `<img
-           src="${obj.img}"
-           alt="${obj.name}"
-           onload="this.nextElementSibling.style.display='none'"
-           onerror="this.style.display='none'"
-         />
-         <span class="fallback-icon">${obj.emoji}</span>`
-      : `<span class="fallback-icon">${obj.emoji}</span>`;
 
     const card = document.createElement("article");
     card.className = "mission-card";
@@ -108,8 +99,14 @@ function renderObjectCards() {
 
       <div class="hologram-stage">
         <div class="holo-ring"></div>
-        <div class="holo-avatar">
-          ${holoVisual}
+        <div class="holo-avatar ${isRestored ? "is-restored" : "is-locked"}">
+          <img
+            src="${obj.img}"
+            alt="${obj.name}"
+            onload="this.nextElementSibling.style.display='none'"
+            onerror="this.style.display='none'"
+          />
+          <span class="fallback-icon">${obj.emoji}</span>
         </div>
         <div class="holo-base"></div>
       </div>
