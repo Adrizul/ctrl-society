@@ -245,140 +245,15 @@ function getCategoryFallback(category) {
   }
 }
 
-// === FORO DE LA COMUNIDAD: PUBLICACIONES PREDETERMINADAS BILINGÜES ===
-const INITIAL_FORUM_POSTS = [
-  {
-    id: "post_1",
-    author: "Comandante_Astro",
-    roleBadge: { es: "OFICIAL DE ENLACE", en: "LIAISON OFFICER" },
-    avatar: "🚀",
-    tag: { es: "SEÑALES DEL MUSEO", en: "MUSEUM SIGNALS" },
-    title: {
-      es: "¿Cuál de los 15 objetos perdidos fue el más emocionante de rescatar?",
-      en: "Which of the 15 lost objects was the most thrilling to rescue?"
-    },
-    content: {
-      es: "¡Saludos tripulación! Acabo de completar el rescate de las 15 señales para desbloquear el Museo Galáctico. Personalmente la historia del Módulo Lunar Apolo abandonado en el Mar de la Tranquilidad y la espátula STS-121 que flotó en órbita me parecieron fascinantes. ¿Qué misión les pareció más desafiante o conmovedora?",
-      en: "Greetings crew! I just finished rescuing all 15 signals to unlock the Galactic Museum. Personally, the story of the Apollo Lunar Module abandoned at the Sea of Tranquility and the STS-121 spatula floating in orbit were fascinating. Which mission did you find most challenging or moving?"
-    },
-    date: { es: "Hace 2 horas", en: "2 hours ago" },
-    likes: 18,
-    userLiked: false,
-    replies: [
-      {
-        id: "rep_1_1",
-        author: "Dra_Elena_Marte",
-        date: { es: "Hace 1 hora", en: "1 hour ago" },
-        text: {
-          es: "¡Totalmente de acuerdo! La pequeña Sojourner en Marte me dio mucha nostalgia al pensar que fue el primer paso de todos los rovers modernos.",
-          en: "Totally agree! Little Sojourner on Mars gave me so much nostalgia, knowing it was the first step for all modern rovers."
-        }
-      },
-      {
-        id: "rep_1_2",
-        author: "Cadete_Nova",
-        date: { es: "Hace 35 minutos", en: "35 minutes ago" },
-        text: {
-          es: "El helicóptero Ingenuity fue mi favorito. Saber que voló más de 70 veces en una atmósfera tan delgada es una obra maestra de ingeniería.",
-          en: "The Ingenuity helicopter was my favorite. Knowing it flew more than 70 times in such a thin atmosphere is an engineering masterpiece."
-        }
-      }
-    ]
-  },
-  {
-    id: "post_2",
-    author: "Ingeniero_Ares",
-    roleBadge: { es: "ESPECIALISTA MARTE", en: "MARS SPECIALIST" },
-    avatar: "🔴",
-    tag: { es: "MISIONES & ROVERS", en: "MISSIONS & ROVERS" },
-    title: {
-      es: "La increíble longevidad de las misiones: de Opportunity a Perseverance",
-      en: "The incredible longevity of missions: from Opportunity to Perseverance"
-    },
-    content: {
-      es: "Es asombroso recordar que las sondas Viking estaban planeadas para meses y operaron años, y Opportunity duró casi 15 años cuando su garantía era de 90 soles. En Ctrl Society se honra justamente esa resistencia del hardware humano en el espacio exterior.",
-      en: "It is amazing to remember that Viking landers were planned for months and worked for years, and Opportunity lasted nearly 15 years when its warranty was 90 sols. Ctrl Society honors that very resilience of human hardware in outer space."
-    },
-    date: { es: "Hace 5 horas", en: "5 hours ago" },
-    likes: 24,
-    userLiked: true,
-    replies: [
-      {
-        id: "rep_2_1",
-        author: "AstroFísico_99",
-        date: { es: "Hace 3 horas", en: "3 hours ago" },
-        text: {
-          es: "Los 'cleaning events' donde el viento marciano limpiaba los paneles solares de Opportunity parecían milagros de la naturaleza.",
-          en: "The 'cleaning events' where Martian winds swept Opportunity's solar panels felt like miracles of nature."
-        }
-      }
-    ]
-  },
-  {
-    id: "post_3",
-    author: "Vanguardia_Webb",
-    roleBadge: { es: "OBSERVADOR COSMOS", en: "COSMOS OBSERVER" },
-    avatar: "🔭",
-    tag: { es: "TEORÍAS & ESPACIO", en: "THEORIES & SPACE" },
-    title: {
-      es: "La señal de las Voyager 1 y 2 en el espacio interestelar",
-      en: "Voyager 1 and 2's signal in interstellar space"
-    },
-    content: {
-      es: "¿Sabían que las antenas de 70 metros de la Deep Space Network (DSN) de la NASA aún captan señales de solo unos pocos vatios emitidas por las Voyager a más de 20 horas luz de distancia? Es el verdadero espíritu de Ctrl Society manteniéndose con vida en el infinito.",
-      en: "Did you know NASA's 70-meter Deep Space Network (DSN) antennas still receive signals of just a few watts from the Voyagers over 20 light-hours away? It is the true spirit of Ctrl Society alive in the infinite."
-    },
-    date: { es: "Ayer", en: "Yesterday" },
-    likes: 31,
-    userLiked: false,
-    replies: [
-      {
-        id: "rep_3_1",
-        author: "Comandante_Astro",
-        date: { es: "Ayer", en: "Yesterday" },
-        text: {
-          es: "¡Esa telemetría tardó casi un día entero solo en llegar a la Tierra! Es pura poesía científica.",
-          en: "That telemetry took almost an entire day just to reach Earth! Pure scientific poetry."
-        }
-      }
-    ]
-  },
-  {
-    id: "post_4",
-    author: "Selenita_Explorer",
-    roleBadge: { es: "EXPLORADOR LUNA", en: "MOON EXPLORER" },
-    avatar: "🌕",
-    tag: { es: "EVENTOS NASA", en: "NASA EVENTS" },
-    title: {
-      es: "Artemis III y los sitios históricos de Apolo",
-      en: "Artemis III and historical Apollo sites"
-    },
-    content: {
-      es: "La NASA ha establecido zonas de preservación para que los futuros alunizajes de Artemis no arrojen regolito ni dañen las huellas históricas de Neil Armstrong y los módulos Apolo. ¿Creen que los sitios de misiones históricas deberían convertirse en parques patrimoniales de la humanidad?",
-      en: "NASA has established preservation zones so that future Artemis landings do not blast regolith onto Neil Armstrong's historic footprints and Apollo modules. Do you think historical mission sites should become World Heritage parks?"
-    },
-    date: { es: "Hace 2 días", en: "2 days ago" },
-    likes: 42,
-    userLiked: true,
-    replies: [
-      {
-        id: "rep_4_1",
-        author: "Tech_Satelital",
-        date: { es: "Ayer", en: "Yesterday" },
-        text: {
-          es: "Sin duda. Son monumentos equivalentes a las pirámides, pero en otro mundo.",
-          en: "Undoubtedly. They are monuments on par with the pyramids, but on another world."
-        }
-      }
-    ]
-  }
-];
+// === FORO DE LA COMUNIDAD: INICIO LIMPIO (PLAN B: SIN PUBLICACIONES SIMULADAS) ===
+const INITIAL_FORUM_POSTS = [];
 
 // === ESTADO GLOBAL ===
 let currentMissionsList = [...FALLBACK_MISSIONS];
 let currentCategoryFilter = "all";
 let currentSearchTerm = "";
 let forumPosts = [];
+let currentForumFilter = "all";
 let currentApodData = FALLBACK_APOD;
 let isCurrentApodLive = false;
 
@@ -807,14 +682,18 @@ function initForum() {
   const stored = localStorage.getItem("lost_signal_forum_posts");
   if (stored) {
     try {
-      forumPosts = JSON.parse(stored);
+      const parsed = JSON.parse(stored);
+      // Plan B: Descartar publicaciones simuladas previas (post_1 a post_4) y conservar solo las del usuario si existen
+      forumPosts = Array.isArray(parsed)
+        ? parsed.filter((p) => p && !["post_1", "post_2", "post_3", "post_4"].includes(p.id))
+        : [];
     } catch {
-      forumPosts = [...INITIAL_FORUM_POSTS];
+      forumPosts = [];
     }
   } else {
-    forumPosts = [...INITIAL_FORUM_POSTS];
-    saveForumPosts();
+    forumPosts = [];
   }
+  saveForumPosts();
 
   // Selector de Avatar
   const avatarChoices = document.querySelectorAll(".avatar-choice");
@@ -877,12 +756,12 @@ function initForum() {
     chip.addEventListener("click", () => {
       forumFilterChips.forEach((c) => c.classList.remove("active"));
       chip.classList.add("active");
-      const tagFilter = chip.dataset.tag;
-      renderForumThreads(tagFilter);
+      currentForumFilter = chip.dataset.tag || "all";
+      renderForumThreads(currentForumFilter);
     });
   });
 
-  renderForumThreads();
+  renderForumThreads(currentForumFilter);
   updateForumStats();
 }
 
@@ -890,7 +769,7 @@ function saveForumPosts() {
   localStorage.setItem("lost_signal_forum_posts", JSON.stringify(forumPosts));
 }
 
-function renderForumThreads(filterTag = "all") {
+function renderForumThreads(filterTag = currentForumFilter) {
   const listContainer = document.getElementById("forum-threads-list");
   if (!listContainer) return;
 
@@ -1135,6 +1014,6 @@ window.addEventListener("languageChanged", () => {
   if (typeof I18N !== "undefined") I18N.applyLang();
   if (currentApodData) renderApod(currentApodData, isCurrentApodLive);
   applyMissionFilters();
-  renderForumThreads();
+  renderForumThreads(currentForumFilter);
   updateForumStats();
 });
