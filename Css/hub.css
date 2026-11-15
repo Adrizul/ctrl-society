@@ -57,6 +57,116 @@
   margin-top: 0.3rem;
 }
 
+/* === CARRUSEL DE SECTORES (1 A LA VEZ) === */
+.sector-carousel,
+.sector-carousel * {
+  box-sizing: border-box;
+}
+
+.sector-carousel {
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.1rem;
+}
+
+.carousel-controls-wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.carousel-viewport {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  padding: 12px 4px;
+}
+
+.carousel-track {
+  display: flex;
+  width: 100%;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+.carousel-track .mission-card {
+  flex: 0 0 100%;
+  width: 100%;
+  max-width: 100%;
+  min-height: 410px;
+  padding: 1.65rem;
+}
+
+.carousel-track .mission-card:hover {
+  transform: translateY(-3px);
+}
+
+.carousel-btn {
+  flex-shrink: 0;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid var(--sector-secondary);
+  background: rgba(23, 14, 46, 0.9);
+  color: var(--text-main);
+  font-size: 1.15rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 14px rgba(123, 44, 191, 0.35);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.carousel-btn:hover {
+  border-color: var(--sector-accent);
+  background: rgba(123, 44, 191, 0.55);
+  box-shadow: 0 0 20px var(--sector-glow);
+  transform: scale(1.08);
+}
+
+.carousel-btn:active {
+  transform: scale(0.96);
+}
+
+.carousel-indicators {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.55rem;
+}
+
+.indicator-pill {
+  padding: 0.42rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid rgba(157, 78, 221, 0.35);
+  background: rgba(12, 7, 26, 0.75);
+  color: var(--text-muted);
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.indicator-pill:hover {
+  border-color: var(--sector-secondary);
+  color: #ffffff;
+}
+
+.indicator-pill.active {
+  border-color: var(--sector-accent);
+  background: linear-gradient(90deg, rgba(123, 44, 191, 0.5), rgba(200, 85, 37, 0.45));
+  color: #ffffff;
+  box-shadow: 0 0 14px var(--sector-glow);
+}
+
+/* === TRIPULACIÓN === */
 .team-section {
   margin-top: 2.75rem;
   padding: 1.5rem;
@@ -116,4 +226,20 @@
   font-size: 0.92rem;
   color: var(--text-muted);
   line-height: 1.35;
+}
+
+@media (max-width: 540px) {
+  .carousel-controls-wrapper {
+    gap: 0.45rem;
+  }
+
+  .carousel-btn {
+    width: 38px;
+    height: 38px;
+    font-size: 0.95rem;
+  }
+
+  .carousel-track .mission-card {
+    padding: 1.25rem;
+  }
 }
