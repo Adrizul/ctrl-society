@@ -1,8 +1,9 @@
 :root {
-  --sector-accent: #ff9e44;
-  --sector-secondary: #a855f7;
-  --sector-border: #e86a33;
-  --sector-glow: rgba(232, 106, 51, 0.42);
-  --nebula-a: rgba(123, 44, 191, 0.28);
-  --nebula-b: rgba(217, 78, 31, 0.32);
+  --sector-accent: #60a5fa;
+  --sector-secondary: #3b82f6;
+  --sector-border: #2563eb;
+  --sector-glow: rgba(59, 130, 246, 0.38);
+  --btn-gradient: linear-gradient(90deg, #1d4ed8 0%, #2563eb 50%, #60a5fa 100%);
+  --nebula-a: rgba(37, 99, 235, 0.24);
+  --nebula-b: rgba(29, 78, 216, 0.18);
 }

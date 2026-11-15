@@ -25,7 +25,7 @@ function showView(name) {
 }
 
 function renderMuseumPage() {
-  document.title = `${sector.title} | Museo LOST SIGNAL`;
+  document.title = `${sector.title} | Museo CTRL SOCIETY`;
   document.getElementById("sector-code-label").textContent = sector.code;
   document.getElementById("sector-title").textContent = sector.title;
   document.getElementById("sector-tagline").textContent = sector.tagline;

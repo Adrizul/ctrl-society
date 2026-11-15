@@ -1,0 +1,933 @@
+/* =========================================================
+   CTRL SOCIETY - CENTRO DE COMUNIDAD Y TELEMETRÍA NASA
+   Estilos específicos para transmisiones de misiones y foro
+   ========================================================= */
+
+.comunidad-header {
+  text-align: center;
+  margin-bottom: 1.8rem;
+  padding: 1.4rem 1.25rem;
+  border: 1px solid rgba(168, 85, 247, 0.3);
+  border-radius: 6px;
+  background: #0e081c;
+  box-shadow: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.comunidad-header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #e86a33;
+}
+
+.comunidad-header h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin: 0.4rem 0;
+  background: none;
+  -webkit-background-clip: initial;
+  background-clip: initial;
+  -webkit-text-fill-color: initial;
+  text-shadow: none;
+}
+
+.comunidad-header .title-orange {
+  color: #e86a33;
+}
+
+.comunidad-header .title-purple {
+  color: #a855f7;
+}
+
+.live-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--status-ok);
+  box-shadow: 0 0 8px var(--status-ok);
+  animation: liveBlink 1.6s ease-in-out infinite;
+  margin-right: 4px;
+}
+
+@keyframes liveBlink {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.35; transform: scale(0.85); }
+}
+
+/* Selector de Pestañas Principales (Tabs) */
+.comunidad-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 1.8rem;
+  flex-wrap: wrap;
+}
+
+.tab-control-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.7rem 1.5rem;
+  background: #0f0a1c;
+  border: 1px solid rgba(168, 85, 247, 0.35);
+  border-radius: 4px;
+  color: var(--text-muted);
+  font-family: var(--font-display);
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tab-control-btn:hover {
+  border-color: #a855f7;
+  color: #fff;
+  background: #180d2f;
+  transform: none;
+  box-shadow: none;
+}
+
+.tab-control-btn.active {
+  background: #e86a33;
+  border-color: #ff9e44;
+  color: #ffffff;
+  box-shadow: none;
+}
+
+/* =========================================================
+   SECCIÓN 1: TELEMETRÍA Y MISIONES NASA
+   ========================================================= */
+.nasa-section {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* APOD Hero Feature */
+.apod-hero-card {
+  background: linear-gradient(145deg, rgba(30, 16, 56, 0.88), rgba(16, 9, 28, 0.94));
+  border: 1px solid var(--sector-border);
+  border-radius: 18px;
+  padding: 1.75rem;
+  box-shadow: 0 0 35px rgba(232, 106, 51, 0.18);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+@media (max-width: 900px) {
+  .apod-hero-card {
+    grid-template-columns: 1fr;
+  }
+}
+
+.apod-visual-wrap {
+  position: relative;
+  width: 100%;
+  height: 340px;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #090514;
+  border: 1px solid var(--purple-bright);
+  box-shadow: 0 0 24px rgba(123, 44, 191, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.apod-visual-wrap img,
+.apod-visual-wrap iframe {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: none;
+}
+
+.apod-visual-wrap .apod-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(7, 4, 16, 0.82);
+  border: 1px solid var(--sector-accent);
+  color: var(--sector-accent);
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  padding: 0.3rem 0.65rem;
+  border-radius: 6px;
+  letter-spacing: 0.08em;
+  backdrop-filter: blur(4px);
+}
+
+.apod-info-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.apod-date {
+  font-family: var(--font-display);
+  color: var(--purple-bright);
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+}
+
+.apod-title {
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  color: #ffffff;
+  line-height: 1.3;
+}
+
+.apod-desc {
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--text-muted);
+  max-height: 160px;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+
+.apod-actions {
+  display: flex;
+  gap: 0.8rem;
+  margin-top: 0.5rem;
+  flex-wrap: wrap;
+}
+
+/* Filtros y Buscador de Misiones */
+.mission-filters-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  background: var(--panel-bg);
+  padding: 1rem 1.25rem;
+  border-radius: 14px;
+  border: 1px solid var(--panel-border);
+}
+
+.mission-categories {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.filter-chip {
+  padding: 0.45rem 0.95rem;
+  border-radius: 4px;
+  background: #0f0a1c;
+  border: 1px solid rgba(168, 85, 247, 0.35);
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: var(--font-body);
+}
+
+.filter-chip:hover {
+  border-color: #a855f7;
+  background: #180d2f;
+  color: #fff;
+}
+
+.filter-chip.active {
+  background: #e86a33;
+  border-color: #ff9e44;
+  color: #fff;
+  box-shadow: none;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  background: rgba(12, 7, 26, 0.85);
+  border: 1px solid var(--panel-border);
+  border-radius: 10px;
+  padding: 0.35rem 0.8rem;
+  gap: 0.5rem;
+  min-width: 240px;
+}
+
+.search-box input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  width: 100%;
+}
+
+.search-box input::placeholder {
+  color: var(--text-muted);
+  opacity: 0.7;
+}
+
+/* Grid de Misiones NASA */
+.nasa-missions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.4rem;
+}
+
+.nasa-mission-card {
+  background: var(--panel-bg);
+  border: 1px solid var(--panel-border);
+  border-radius: 14px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  position: relative;
+}
+
+.nasa-mission-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--sector-accent);
+  box-shadow: 0 10px 25px rgba(123, 44, 191, 0.3), 0 0 15px var(--sector-glow);
+}
+
+.nasa-card-img-wrap {
+  width: 100%;
+  height: 190px;
+  background: #090514;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.nasa-card-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.35s ease;
+}
+
+.nasa-mission-card:hover .nasa-card-img-wrap img {
+  transform: scale(1.05);
+}
+
+.nasa-card-tag {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: rgba(9, 4, 20, 0.85);
+  border: 1px solid var(--purple-bright);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+  letter-spacing: 0.05em;
+  font-family: var(--font-display);
+}
+
+.nasa-card-body {
+  padding: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  flex: 1;
+}
+
+.nasa-card-date {
+  font-size: 0.8rem;
+  color: var(--orange-amber);
+  font-family: var(--font-display);
+}
+
+.nasa-card-title {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  color: #ffffff;
+  line-height: 1.35;
+}
+
+.nasa-card-text {
+  font-size: 0.92rem;
+  line-height: 1.45;
+  color: var(--text-muted);
+  flex: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.nasa-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 0.6rem;
+  border-top: 1px solid rgba(168, 85, 247, 0.15);
+  margin-top: auto;
+}
+
+.btn-detail {
+  background: transparent;
+  border: 1px solid var(--purple-bright);
+  color: var(--purple-bright);
+  padding: 0.35rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-detail:hover {
+  background: var(--purple-bright);
+  color: #fff;
+}
+
+.btn-quote-forum {
+  background: transparent;
+  border: 1px solid var(--orange-mars);
+  color: var(--orange-amber);
+  padding: 0.35rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-quote-forum:hover {
+  background: var(--orange-mars);
+  color: #fff;
+}
+
+/* =========================================================
+   SECCIÓN 2: FORO DE LA COMUNIDAD (TRANSMISIONES)
+   ========================================================= */
+.forum-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+}
+
+/* Barra de Estadísticas de la Comunidad */
+.forum-stats-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.stat-box {
+  background: var(--panel-bg);
+  border: 1px solid var(--panel-border);
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.stat-icon {
+  font-size: 2rem;
+}
+
+.stat-meta {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-number {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--orange-amber);
+  font-weight: 800;
+}
+
+.stat-label {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+}
+
+/* Formulario de Nueva Transmisión */
+.new-post-panel {
+  background: linear-gradient(135deg, rgba(28, 16, 54, 0.9), rgba(18, 9, 32, 0.95));
+  border: 1px solid var(--sector-border);
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 0 25px rgba(232, 106, 51, 0.15);
+}
+
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.25rem;
+  border-bottom: 1px solid rgba(168, 85, 247, 0.2);
+  padding-bottom: 0.75rem;
+}
+
+.panel-header h2 {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.post-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 720px) {
+  .post-form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.form-group.full-width {
+  grid-column: 1 / -1;
+}
+
+.form-group label {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  color: var(--sector-secondary);
+  letter-spacing: 0.08em;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  background: rgba(10, 6, 22, 0.85);
+  border: 1px solid var(--panel-border);
+  border-radius: 8px;
+  padding: 0.7rem 0.9rem;
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 0.98rem;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--orange-amber);
+  box-shadow: 0 0 12px var(--orange-glow);
+}
+
+.avatar-selector {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.avatar-choice {
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  border: 1px solid var(--panel-border);
+  background: rgba(20, 10, 36, 0.8);
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.avatar-choice:hover {
+  border-color: var(--purple-bright);
+  transform: scale(1.08);
+}
+
+.avatar-choice.selected {
+  border-color: var(--orange-amber);
+  background: rgba(232, 106, 51, 0.25);
+  box-shadow: 0 0 10px var(--orange-glow);
+}
+
+.btn-transmit {
+  width: 100%;
+  padding: 0.85rem;
+  background: linear-gradient(90deg, var(--orange-mars), var(--purple-main));
+  border: 1px solid var(--orange-amber);
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: filter 0.2s, box-shadow 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+}
+
+.btn-transmit:hover {
+  filter: brightness(1.15);
+  box-shadow: 0 0 20px var(--orange-glow);
+}
+
+/* Lista de Hilos / Transmisiones */
+.forum-threads-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.forum-thread-card {
+  background: var(--panel-bg);
+  border: 1px solid var(--panel-border);
+  border-radius: 14px;
+  padding: 1.35rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+
+.forum-thread-card:hover {
+  border-color: rgba(168, 85, 247, 0.6);
+  box-shadow: 0 6px 20px rgba(123, 44, 191, 0.2);
+}
+
+.thread-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.author-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.author-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(36, 17, 66, 0.9);
+  border: 1px solid var(--sector-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
+}
+
+.author-name-role {
+  display: flex;
+  flex-direction: column;
+}
+
+.author-name {
+  font-family: var(--font-display);
+  font-size: 0.98rem;
+  color: #fff;
+  font-weight: 700;
+}
+
+.author-badge {
+  font-size: 0.75rem;
+  color: var(--orange-amber);
+  letter-spacing: 0.05em;
+}
+
+.thread-tag-date {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.thread-tag {
+  background: rgba(168, 85, 247, 0.15);
+  border: 1px solid var(--purple-bright);
+  color: var(--purple-bright);
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-family: var(--font-display);
+}
+
+.thread-date {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.thread-title {
+  font-family: var(--font-display);
+  font-size: 1.18rem;
+  color: #ffffff;
+  line-height: 1.35;
+}
+
+.thread-content {
+  font-size: 0.98rem;
+  line-height: 1.55;
+  color: var(--text-main);
+  white-space: pre-wrap;
+}
+
+.thread-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid rgba(168, 85, 247, 0.15);
+  padding-top: 0.8rem;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.action-btns-group {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.btn-tune {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.4rem 0.85rem;
+  background: rgba(36, 17, 66, 0.6);
+  border: 1px solid var(--panel-border);
+  border-radius: 8px;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-tune:hover,
+.btn-tune.tuned {
+  background: rgba(232, 106, 51, 0.25);
+  border-color: var(--orange-amber);
+  color: var(--orange-amber);
+  box-shadow: 0 0 10px rgba(232, 106, 51, 0.3);
+}
+
+.btn-replies-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.4rem 0.85rem;
+  background: rgba(36, 17, 66, 0.6);
+  border: 1px solid var(--panel-border);
+  border-radius: 8px;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-replies-toggle:hover {
+  border-color: var(--purple-bright);
+  color: #fff;
+}
+
+/* Área de Respuestas Desplegables */
+.thread-replies-container {
+  margin-top: 0.8rem;
+  padding-top: 0.8rem;
+  border-top: 1px dashed rgba(168, 85, 247, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.reply-item {
+  background: rgba(14, 8, 28, 0.85);
+  border-left: 3px solid var(--purple-bright);
+  border-radius: 0 8px 8px 0;
+  padding: 0.65rem 0.9rem;
+  font-size: 0.92rem;
+}
+
+.reply-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.3rem;
+  font-size: 0.78rem;
+}
+
+.reply-author {
+  font-family: var(--font-display);
+  color: var(--purple-bright);
+}
+
+.reply-date {
+  color: var(--text-muted);
+}
+
+.reply-input-bar {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: 0.4rem;
+}
+
+.reply-input-bar input {
+  flex: 1;
+  background: rgba(8, 4, 18, 0.85);
+  border: 1px solid var(--panel-border);
+  border-radius: 6px;
+  padding: 0.5rem 0.75rem;
+  color: #fff;
+  font-size: 0.9rem;
+  outline: none;
+}
+
+.reply-input-bar input:focus {
+  border-color: var(--purple-bright);
+}
+
+.btn-send-reply {
+  padding: 0.5rem 0.9rem;
+  background: var(--purple-main);
+  border: 1px solid var(--purple-bright);
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: filter 0.2s;
+}
+
+.btn-send-reply:hover {
+  filter: brightness(1.2);
+}
+
+/* =========================================================
+   MODAL DE TELEMETRÍA DETALLADA NASA
+   ========================================================= */
+.telemetry-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(5, 3, 12, 0.88);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.telemetry-modal.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.telemetry-modal-dialog {
+  background: linear-gradient(135deg, rgba(28, 15, 54, 0.98), rgba(16, 8, 30, 0.98));
+  border: 1.5px solid var(--sector-border);
+  box-shadow: 0 0 50px rgba(123, 44, 191, 0.4), inset 0 0 30px rgba(232, 106, 51, 0.15);
+  border-radius: 18px;
+  max-width: 820px;
+  width: 100%;
+  max-height: 88vh;
+  overflow-y: auto;
+  padding: 2rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  background: rgba(36, 17, 66, 0.7);
+  border: 1px solid var(--panel-border);
+  color: #fff;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.modal-close-btn:hover {
+  border-color: var(--status-lost);
+  background: rgba(232, 106, 51, 0.25);
+  color: var(--orange-amber);
+}
+
+.modal-image-preview {
+  width: 100%;
+  max-height: 380px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #080414;
+  border: 1px solid var(--sector-secondary);
+}
+
+.modal-image-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Toast Notifications */
+.hud-toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 1200;
+  background: rgba(20, 10, 40, 0.95);
+  border: 1px solid var(--status-ok);
+  box-shadow: 0 0 25px rgba(46, 196, 182, 0.35);
+  border-radius: 10px;
+  padding: 0.85rem 1.4rem;
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 0.88rem;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  transform: translateY(120%);
+  transition: transform 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+}
+
+.hud-toast.visible {
+  transform: translateY(0);
+}

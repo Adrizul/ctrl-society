@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MUSEO GALÁCTICO | LOST SIGNAL</title>
+  <title>MUSEO GALÁCTICO | CTRL SOCIETY</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../Css/base.css" />
-  <link rel="stylesheet" href="../Css/sector.css" />
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/sector.css" />
   <style>
     .museum-lock-box {
       max-width: 640px;
@@ -16,9 +16,9 @@
       padding: 2.2rem;
       text-align: center;
       background: var(--panel-bg);
-      border: 2px solid var(--status-lost);
-      border-radius: 18px;
-      box-shadow: 0 0 36px rgba(232, 106, 51, 0.25);
+      border: 1px solid var(--status-lost);
+      border-radius: 6px;
+      box-shadow: none;
     }
     .lock-icon {
       font-size: 3.5rem;
@@ -92,7 +92,10 @@
 
   <main class="screen">
     <div class="sector-topbar">
-      <a href="../index.html" class="btn-back">⬅ VOLVER AL CENTRO DE CONTROL</a>
+      <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center;">
+        <a href="../index.html" class="btn-back">⬅ VOLVER AL CENTRO DE CONTROL</a>
+        <a href="comunidad.html" class="btn-back" style="border-color: var(--orange-mars); color: var(--orange-amber);">📡 COMUNIDAD & NASA</a>
+      </div>
       <div class="progress-pill compact">
         <span>ARCHIVO DEL MUSEO:</span>
         <strong id="museum-progress">0 / 15</strong>
@@ -120,7 +123,7 @@
     <section id="museum-unlocked" class="hidden">
       <header class="exhibit-header" style="margin-bottom: 1.5rem;">
         <div class="hud-tag">ARCHIVO OFICIAL COMPLETADO // 15 DE 15 SEÑALES RESTAURADAS</div>
-        <h1>MUSEO INTERACTIVO LOST SIGNAL</h1>
+        <h1>MUSEO INTERACTIVO CTRL SOCIETY</h1>
         <p class="exhibit-subtitle">Colección completa de naves, rovers, instrumentos científicos y objetos orbitales recuperados</p>
       </header>
 

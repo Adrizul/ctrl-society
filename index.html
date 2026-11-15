@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LOST SIGNAL | NASA Space Apps 2026</title>
+  <title>CTRL SOCIETY | NASA Space Apps 2026</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/base.css" />
-  <link rel="stylesheet" href="css/hub.css?v=3" />
+  <link rel="stylesheet" href="css/hub.css?v=5" />
 </head>
 <body>
   <div class="space-bg" aria-hidden="true">
@@ -21,25 +21,31 @@
       <div class="hud-tag">NASA SPACE APPS CHALLENGE 2026 // MUSEO INTERACTIVO DE SEÑALES</div>
       <div class="brand-title">
         <span class="wave-bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-        <h1>LOST SIGNAL</h1>
+        <h1><span class="title-orange">CTRL</span> <span class="title-purple">SOCIETY</span></h1>
         <span class="wave-bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
       </div>
-      <p class="subtitle">Regresando la señal a los héroes olvidados de la exploración espacial</p>
+      <p class="subtitle">Regresando la señal a los <strong class="hero-emphasis">héroes olvidados</strong> de la exploración espacial</p>
 
-      <div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 0.85rem; margin-top: 1rem;">
-        <div class="progress-pill" style="margin-top: 0;">
+      <div class="header-pills-row">
+        <div class="progress-pill">
           <span>SEÑALES RESTAURADAS EN EL MUSEO:</span>
           <strong id="global-progress">0 / 15</strong>
         </div>
 
-        <a href="html/museo.html" id="btn-visit-museum" class="progress-pill" style="margin-top: 0; border-color: var(--purple-bright); color: var(--text-main); cursor: pointer; text-decoration: none;">
+        <a href="html/museo.html" id="btn-visit-museum" class="progress-pill pill-museum">
           <span id="museum-btn-icon">🔒</span>
-          <strong id="museum-btn-text" style="color: var(--purple-bright);">VISITAR MUSEO</strong>
+          <strong id="museum-btn-text">VISITAR MUSEO</strong>
+        </a>
+
+        <a href="html/comunidad.html" id="btn-comunidad" class="progress-pill pill-community" title="Ver actualizaciones de misiones NASA y foro de la comunidad">
+          <span class="live-dot"></span>
+          <span id="comunidad-btn-icon">📡</span>
+          <strong id="comunidad-btn-text">COMUNIDAD & NASA</strong>
         </a>
       </div>
     </header>
 
-    <!-- CARRUSEL DE PLANETAS GIGANTES -->
+    <!-- CARRUSEL ORBITAL DE PLANETAS -->
     <section class="sector-carousel" aria-label="Sectores del Museo Espacial">
       <div class="carousel-controls-wrapper">
         <button type="button" class="carousel-btn prev" id="carousel-prev" aria-label="Sector anterior">
@@ -48,9 +54,9 @@
 
         <div class="carousel-viewport" id="carousel-viewport">
           <div class="carousel-track" id="carousel-track">
-            
+
             <!-- SECTOR 01: LA LUNA -->
-            <article class="planet-slide">
+            <article class="planet-slide" data-sector="luna">
               <div class="planet-hud-meta">
                 <span class="mission-code">SECTOR 01 / 03</span>
                 <span class="status-badge lost" id="badge-luna">0 / 4 SEÑALES</span>
@@ -59,7 +65,11 @@
               <div class="giant-planet-stage">
                 <div class="planet-orbit-ring"></div>
                 <div class="planet-orbit-ring inner"></div>
-                <div class="planet-sphere">
+
+                <!-- Órbita dinámica de misiones -->
+                <div class="orbit-system" id="orbit-luna" aria-label="Misiones en órbita lunar"></div>
+
+                <button type="button" class="planet-sphere" aria-expanded="false" aria-label="Seleccionar La Luna para ver misiones en órbita">
                   <img
                     src="assets/Imagenes/sectores/destino_luna.png"
                     alt="La Luna"
@@ -67,9 +77,13 @@
                     onerror="this.style.display='none'"
                   />
                   <span class="fallback-icon">🌕</span>
-                </div>
+                  <span class="planet-scan-hint">📡 TOCA PARA ÓRBITA</span>
+                </button>
                 <div class="planet-base-glow"></div>
               </div>
+
+              <!-- Visor HUD de la misión seleccionada en órbita -->
+              <div class="orbit-telemetry-card" id="telemetry-luna" aria-live="polite"></div>
 
               <div class="planet-info">
                 <h2>LA LUNA</h2>
@@ -82,7 +96,7 @@
             </article>
 
             <!-- SECTOR 02: MARTE -->
-            <article class="planet-slide">
+            <article class="planet-slide" data-sector="marte">
               <div class="planet-hud-meta">
                 <span class="mission-code">SECTOR 02 / 03</span>
                 <span class="status-badge lost" id="badge-marte">0 / 5 SEÑALES</span>
@@ -91,7 +105,11 @@
               <div class="giant-planet-stage">
                 <div class="planet-orbit-ring"></div>
                 <div class="planet-orbit-ring inner"></div>
-                <div class="planet-sphere">
+
+                <!-- Órbita dinámica de misiones -->
+                <div class="orbit-system" id="orbit-marte" aria-label="Misiones en órbita marciana"></div>
+
+                <button type="button" class="planet-sphere" aria-expanded="false" aria-label="Seleccionar Marte para ver misiones en órbita">
                   <img
                     src="assets/Imagenes/sectores/destino_marte.png"
                     alt="Planeta Marte"
@@ -99,9 +117,13 @@
                     onerror="this.style.display='none'"
                   />
                   <span class="fallback-icon">🔴</span>
-                </div>
+                  <span class="planet-scan-hint">📡 TOCA PARA ÓRBITA</span>
+                </button>
                 <div class="planet-base-glow"></div>
               </div>
+
+              <!-- Visor HUD de la misión seleccionada en órbita -->
+              <div class="orbit-telemetry-card" id="telemetry-marte" aria-live="polite"></div>
 
               <div class="planet-info">
                 <h2>MARTE</h2>
@@ -114,7 +136,7 @@
             </article>
 
             <!-- SECTOR 03: ESPACIO PROFUNDO -->
-            <article class="planet-slide">
+            <article class="planet-slide" data-sector="espacio">
               <div class="planet-hud-meta">
                 <span class="mission-code">SECTOR 03 / 03</span>
                 <span class="status-badge lost" id="badge-espacio">0 / 4 SEÑALES</span>
@@ -123,7 +145,11 @@
               <div class="giant-planet-stage">
                 <div class="planet-orbit-ring"></div>
                 <div class="planet-orbit-ring inner"></div>
-                <div class="planet-sphere">
+
+                <!-- Órbita dinámica de misiones -->
+                <div class="orbit-system" id="orbit-espacio" aria-label="Misiones en órbita de espacio profundo"></div>
+
+                <button type="button" class="planet-sphere" aria-expanded="false" aria-label="Seleccionar Espacio Profundo para ver misiones en órbita">
                   <img
                     src="assets/Imagenes/sectores/destino_espacio.png"
                     alt="Espacio Profundo"
@@ -131,9 +157,13 @@
                     onerror="this.style.display='none'"
                   />
                   <span class="fallback-icon">🛰️</span>
-                </div>
+                  <span class="planet-scan-hint">📡 TOCA PARA ÓRBITA</span>
+                </button>
                 <div class="planet-base-glow"></div>
               </div>
+
+              <!-- Visor HUD de la misión seleccionada en órbita -->
+              <div class="orbit-telemetry-card" id="telemetry-espacio" aria-live="polite"></div>
 
               <div class="planet-info">
                 <h2>ESPACIO PROFUNDO</h2>
@@ -160,17 +190,17 @@
       </div>
     </section>
 
-    <!-- TRIPULACIÓN LOST SIGNAL -->
-    <section class="team-section" aria-label="Tripulación Lost Signal">
+    <!-- TRIPULACIÓN CTRL SOCIETY -->
+    <section class="team-section" aria-label="Tripulación Ctrl Society">
       <div class="team-header">
         <span class="hud-tag">CONTROL DE MISIÓN // INTEGRANTES</span>
-        <h2>TRIPULACIÓN LOST SIGNAL</h2>
+        <h2>TRIPULACIÓN CTRL SOCIETY</h2>
       </div>
       <div class="team-grid" id="team-grid"></div>
     </section>
   </main>
 
   <script src="js/data.js"></script>
-  <script src="js/hub.js"></script>
+  <script src="js/hub.js?v=4"></script>
 </body>
 </html>
