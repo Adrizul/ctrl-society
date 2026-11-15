@@ -590,11 +590,27 @@
 }
 
 .indicator-pill.active {
-  border-color: #ff9e44;
-  background: #e86a33;
-  color: #ffffff;
+  color: var(--bg-deep);
   font-weight: 700;
   box-shadow: none;
+}
+
+/* 01 • LA LUNA (tono del título en luna.css) */
+.indicator-pill[data-index="0"].active {
+  background: #38bdf8;
+  border-color: #7dd3fc;
+}
+
+/* 02 • MARTE (tono del título en marte.css) */
+.indicator-pill[data-index="1"].active {
+  background: #60a5fa;
+  border-color: #93c5fd;
+}
+
+/* 03 • ESPACIO PROFUNDO (tono del título en espacio.css) */
+.indicator-pill[data-index="2"].active {
+  background: #818cf8;
+  border-color: #a5b4fc;
 }
 
 /* === TRIPULACIÓN === */
