@@ -676,41 +676,113 @@
 }
 
 @media (max-width: 640px) {
-  .giant-planet-stage {
-    --stage-size: clamp(300px, 84vw, 360px);
-  }
-
-  .orbit-node {
-    width: 110px;
-    height: 86px;
-    margin: -43px 0 0 -55px;
-  }
-
-  .orbit-icon-bubble {
-    width: 54px;
-    height: 54px;
-    font-size: 1.65rem;
-  }
-
-  .orbit-node-label {
-    font-size: 0.68rem;
-    max-width: 115px;
-    padding: 0.2rem 0.5rem;
-  }
-
+  /* 1. Botones de navegación compactos y pegados a los bordes */
   .carousel-controls-wrapper {
-    gap: 0.3rem;
+    position: relative;
+    gap: 0.25rem;
   }
 
   .carousel-btn {
-    width: 42px;
-    height: 42px;
-    font-size: 1.05rem;
+    width: 34px;
+    height: 34px;
+    font-size: 0.95rem;
+  }
+
+  .planet-slide {
+    padding: 0.25rem 0.2rem;
+  }
+
+  /* 2. Escenario orbital fluido que cabe 100% entre ambas flechas */
+  .giant-planet-stage {
+    --stage-size: min(74vw, 310px);
+    --orbit-r: calc(var(--stage-size) * 0.41);
+    margin: 0.15rem auto 1rem;
+  }
+
+  /* 3. Etiqueta TAP FOR ORBIT más abajo para no tapar el planeta */
+  .planet-scan-hint {
+    bottom: 6%;
+    padding: 0.28rem 0.65rem;
+    font-size: 0.65rem;
+  }
+
+  /* 4. Nodos orbitales proporcionales para no recortarse al girar */
+  .orbit-node {
+    width: 92px;
+    height: 74px;
+    margin: -37px 0 0 -46px;
+  }
+
+  .orbit-icon-bubble {
+    width: 44px;
+    height: 44px;
+    font-size: 1.35rem;
+    border-width: 2px;
+  }
+
+  .orbit-node-label {
+    font-size: 0.62rem;
+    max-width: 92px;
+    padding: 0.16rem 0.42rem;
+  }
+
+  /* 5. Tarjeta de telemetría desplegada compacta en móvil */
+  .planet-slide.orbit-active .orbit-telemetry-card {
+    padding: 0.75rem 0.9rem;
+    margin-bottom: 0.9rem;
+  }
+
+  .telemetry-inner {
+    gap: 0.75rem;
+  }
+
+  .telemetry-icon {
+    width: 46px;
+    height: 46px;
+    font-size: 1.65rem;
+  }
+
+  .telemetry-title-row h3 {
+    font-size: 0.98rem;
+  }
+
+  .telemetry-hook {
+    font-size: 0.88rem;
+  }
+
+  /* 6. Textos inferiores y botón CTA */
+  .planet-info h2 {
+    font-size: 1.55rem;
+  }
+
+  .planet-hook {
+    font-size: 0.95rem;
+    padding: 0 0.5rem;
+    margin-bottom: 0.9rem;
   }
 
   .planet-cta {
-    min-width: 230px;
-    padding: 0.8rem 1.3rem;
-    font-size: 0.82rem;
+    min-width: 210px;
+    padding: 0.75rem 1.25rem;
+    font-size: 0.8rem;
+  }
+}
+
+/* Ajuste extra para teléfonos muy angostos (320px - 380px) */
+@media (max-width: 390px) {
+  .giant-planet-stage {
+    --stage-size: min(70vw, 255px);
+    --orbit-r: calc(var(--stage-size) * 0.40);
+  }
+
+  .orbit-icon-bubble {
+    width: 38px;
+    height: 38px;
+    font-size: 1.15rem;
+  }
+
+  .orbit-node-label {
+    font-size: 0.58rem;
+    max-width: 80px;
   }
 }
